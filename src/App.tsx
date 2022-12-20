@@ -4,6 +4,7 @@ import Home from "./Routes/Home";
 import About from "./Routes/About";
 import Project from "./Routes/Project";
 import Resume from "./Routes/Resume";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
 
         <Route path="/" element={<Home />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
