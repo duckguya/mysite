@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { useMatch, useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { isVisibleState } from "../atoms";
 import ProjectDetail from "../Components/ProjectDetail";
 
 const Container = styled.div<{ isvisible: boolean }>`
-  padding: ${(props) => (props.isvisible ? "30px" : 0)};
+  padding: ${(props) => (props.isvisible ? "100px" : "50px")};
 `;
 const Test = styled.div``;
+
 function Project() {
   const navigate = useNavigate();
-  const [isVisible, setVisible] = useState(true);
+  const [isVisible, setIsVisible] = useRecoilState(isVisibleState);
 
   const onClicked = () => {
     navigate("/project/1");
-    setVisible(false);
+    setIsVisible(false);
   };
   return (
     <>

@@ -1,37 +1,59 @@
 import styled from "styled-components";
+import sample from "../assets/images/test.png";
 
 const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 30px;
+  padding: 50px 180px 0 0;
   height: 3000px;
 `;
-
-const ImgBox = styled.div`
+const BoxWrapper = styled.div`
+  width: 716px;
+  height: 519px;
+  overflow: hidden;
   position: sticky;
   align-self: flex-start;
-
   top: 100px;
+`;
+const ImgBox = styled.div<{ sample: string }>`
+  background-image: url(${sample});
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+`;
+const TextBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  height: 1500px;
+  background-color: beige;
 `;
 const Text = styled.div`
   width: 300px;
   height: 300px;
-  background-color: aqua;
-  position: sticky;
+  h2 {
+    font-size: 40px;
+    text-align: center;
+  }
+  span {
+    font-size: 16px;
+    font-weight: bold;
+  }
 `;
 
 function ProjectDetail() {
   return (
     <Container>
-      <ImgBox>이미지자리</ImgBox>
-      <Text>
-        <p>
-          나랏말싸미 듕귁에 달아 문자와를 서로 사맛디 아니할쎄 이런 전차로
-          어린백성이 니르고저 할빼이셔도 마참내 제 뜻을 능히펴지 못할놈이
-          하니다. 내이를 어여삐 녀겨 새로 스물여덟자를 맹가노니 사람마다
-          수비니겨 날로쓰매 편아케 하고저 할 따라미니라.
-        </p>
-      </Text>
+      <TextBox>
+        <BoxWrapper>
+          <ImgBox sample={sample} />
+        </BoxWrapper>
+        <Text>
+          <h2>Netflix Clone</h2>
+          <span>사용기술</span>
+          <p>Javascript, React, Typescript, styled-component</p>
+          <span>구현 기능</span>
+          <p>1. 설명</p>
+          <p>2.. 설명</p>
+        </Text>
+      </TextBox>
     </Container>
   );
 }
