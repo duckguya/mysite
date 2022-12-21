@@ -1,8 +1,42 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { isVisibleState } from "../atoms";
 
+function Header() {
+  const [isVisible, setIsVisible] = useRecoilState(isVisibleState);
+  const [btnActive, setBtnActive] = useState(0);
+
+  const categories = [
+    { id: 1, name: "Home", linkName: "/" },
+    { id: 2, name: "Project", linkName: "/project" },
+    { id: 3, name: "About", linkName: "/about" },
+    { id: 4, name: "Resume", linkName: "/resume" },
+  ];
+
+  const onClicked = (idx: number) => {
+    setBtnActive(idx);
+    setIsVisible(true);
+  };
+
+  return (
+    <Nav>
+      {categories.map((category, idx) => (
+        <Link key={idx} to={category.linkName}>
+          <Tab
+            value={idx}
+            className={idx === btnActive ? " active" : ""}
+            // onClick={() => toggleActive}
+            onClick={() => onClicked(idx)}
+          >
+            {category.name}
+          </Tab>
+        </Link>
+      ))}
+    </Nav>
+  );
+}
 const Nav = styled.nav`
   display: flex;
   justify-content: center;
@@ -12,38 +46,19 @@ const Nav = styled.nav`
   background-color: ${(props) => props.theme.backColor};
   z-index: 99;
 `;
-const Tap = styled.div`
+const Tab = styled.button`
   margin: 15px 5px;
   color: ${(props) => props.theme.mainColor};
   padding: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
   &:hover {
     color: ${(props) => props.theme.pointColor};
   }
+  &.active {
+    color: ${(props) => props.theme.pointColor};
+  }
 `;
-
-function Header() {
-  const [isVisible, setIsVisible] = useRecoilState(isVisibleState);
-
-  const onClicked = () => {
-    setIsVisible(true);
-  };
-
-  return (
-    <Nav>
-      <Link to={"/"}>
-        <Tap>Home</Tap>
-      </Link>
-      <Link to={"/project"}>
-        <Tap onClick={onClicked}>Project</Tap>
-      </Link>
-      <Link to={"/about"}>
-        <Tap>About</Tap>
-      </Link>
-      <Link to={"/resume"}>
-        <Tap>Resume</Tap>
-      </Link>
-    </Nav>
-  );
-}
 
 export default Header;

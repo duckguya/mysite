@@ -26,7 +26,12 @@ function ProjectList() {
   return (
     <Container>
       {/* <button onClick={onClicked}>Project</button> */}
-      <Box sample={sample} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
+      <Box
+        sample={sample}
+        onMouseOver={onMouseOver}
+        onMouseOut={onMouseOut}
+        onClick={onClicked}
+      >
         {/* {isInfo && ( */}
         <Info>
           <Title>Project's name</Title>
