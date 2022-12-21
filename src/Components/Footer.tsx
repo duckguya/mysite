@@ -9,12 +9,13 @@ function Footer() {
   );
 }
 
-const Container = styled.div`
+const Container = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 10px 0;
   color: ${(props) => props.theme.pointColor};
+  transform: translateY(-100%);
 `;
 
 export default Footer;
