@@ -1,10 +1,11 @@
 import { useMatch } from "react-router-dom";
 import styled from "styled-components";
-import sample from "../assets/images/test.png";
+// import sample from "../assets/images/net.gif";
 import {
   IGetPortfolioDetail,
   PortfolioContent,
 } from "../utils/PortfolioContent";
+import ReactPlayer from "react-player/lazy";
 
 interface IProps {
   data?: IGetPortfolioDetail;
@@ -22,14 +23,17 @@ function ProjectDetail() {
       <ContentWrapper>
         <TextWrapper>
           <Header>
+            <a href={data.link} title={"잘부탁드립니다!"} target="_blank">
+              Demo &gt;
+            </a>
             <p>{data.title}</p>
             <span>{data.about}</span>
           </Header>
           <TechWrapper>
             <span>사용기술</span>
-            {data.technologies.map((tech) =>
+            {data.technologies.map((tech, index) =>
               tech === data.technologies[data.technologies.length - 1] ? (
-                <p>{tech}</p>
+                <p key={index}>{tech}</p>
               ) : (
                 <p>{tech},</p>
               )
@@ -38,20 +42,24 @@ function ProjectDetail() {
           <SkillWarpper>
             <span>구현 기능</span>
             <ul>
-              {data.content.function.map((f) => (
-                <li>{f}</li>
+              {data.content.function.map((f, index) => (
+                <li key={index}>{f}</li>
               ))}
             </ul>
           </SkillWarpper>
         </TextWrapper>
         <ScrollWrapper>
           <ImgWrapper>
-            <ImgBox sample={data.images[0]} />
+            {data.images.map((d, index) => (
+              <ImgBox key={index} sample={d} />
+            ))}
           </ImgWrapper>
           <Explanation>
-            {data.content.explanation.map((d) => (
-              <p>{d}</p>
+            <div></div>
+            {data.content.explanation.map((d, index) => (
+              <p key={index}>{d}</p>
             ))}
+            {/* <div></div> */}
           </Explanation>
         </ScrollWrapper>
       </ContentWrapper>
@@ -70,6 +78,7 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 3000px;
 `;
 
 const TextWrapper = styled.div`
@@ -78,11 +87,22 @@ const TextWrapper = styled.div`
   border-radius: 10px;
   padding: 60px;
   width: 65vw;
-  margin-bottom: 30px;
+  margin-bottom: 100px;
 `;
 const Header = styled.div`
   /* display: flex; */
   align-items: baseline;
+  a {
+    padding: 5px;
+    color: ${(props) => props.theme.mainColor};
+
+    &:hover {
+      color: ${(props) => props.theme.pointColor};
+    }
+    &:active {
+      color: gray;
+    }
+  }
   p {
     font-size: 80px;
     font-weight: 500;
@@ -133,7 +153,8 @@ const SkillWarpper = styled.div`
 const ScrollWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 1000px;
+  width: 80%;
+  /* height: 1000px; */
   @media screen and (max-width: 1200px) {
     display: block;
   }
@@ -141,24 +162,31 @@ const ScrollWrapper = styled.div`
 const ImgWrapper = styled.div`
   width: 716px;
   height: 519px;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: sticky;
   align-self: flex-start;
   top: 150px;
 `;
 const ImgBox = styled.div<{ sample: {} }>`
-  background-image: url(${sample});
+  background-image: url(${(props) => props.sample});
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
-  margin-right: 30px;
+  margin: 0 30px 30px 0;
+  /* margin-right: 30px; */
+  border: 5px solid black;
+  box-shadow: 0px 20px 10px -15px #404040;
 `;
 const Explanation = styled.div`
   white-space: pre-line;
-  width: 500px;
+  width: 30%;
+  div {
+    height: 300px;
+  }
   p {
     font-size: 21px;
     font-weight: 500;
+    line-height: 30px;
   }
 `;
 

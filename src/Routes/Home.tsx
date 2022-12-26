@@ -1,17 +1,5 @@
 import styled from "styled-components";
 
-const Container = styled.div`
-  padding: 80px 30px;
-`;
-const Title = styled.nav`
-  font-size: 150px;
-  text-shadow: 2px 2px 2px ${(props) => props.theme.mainColor};
-`;
-const Content = styled.nav`
-  font-size: 20px;
-  color: #545454;
-`;
-
 function Home() {
   return (
     <Container>
@@ -21,4 +9,16 @@ function Home() {
   );
 }
 
+const Container = styled.div`
+  padding: 80px 30px;
+  height: 100vh;
+`;
+const Title = styled.nav`
+  font-size: 150px;
+  text-shadow: 2px 2px 2px ${(props) => props.theme.mainColor};
+`;
+const Content = styled.nav`
+  font-size: 20px;
+  color: #545454;
+`;
 export default Home;
