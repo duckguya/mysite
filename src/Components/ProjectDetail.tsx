@@ -1,27 +1,58 @@
+import { useMatch } from "react-router-dom";
 import styled from "styled-components";
 import sample from "../assets/images/test.png";
+import {
+  IGetPortfolioDetail,
+  PortfolioContent,
+} from "../utils/PortfolioContent";
+
+interface IProps {
+  data?: IGetPortfolioDetail;
+}
 
 function ProjectDetail() {
+  const detailMatch = useMatch("/project/:projectId");
+
+  const datas = PortfolioContent;
+  const id = Number(detailMatch?.params.projectId);
+  const data = datas[id];
+
   return (
     <Container>
-      <TextBox>
-        <BoxWrapper>
-          <ImgBox sample={sample} />
-        </BoxWrapper>
-        <Text>
-          <h2>Netflix Clone</h2>
-          <span>사용기술</span>
-          <p>Javascript, React, Typescript, styled-component</p>
-          <span>구현 기능</span>
-          <p>1. 설명</p>
-          <p>2.. 설명</p>
-        </Text>
-      </TextBox>
+      <ContentWrapper>
+        <TextBox>
+          <BoxWrapper>
+            <ImgBox sample={data.images[0]} />
+          </BoxWrapper>
+          <Text>
+            <h2>{data.title}</h2>
+            {data.about}
+            <span>사용기술</span>
+            {data.technologies.map((tech) => (
+              <p>{tech}</p>
+            ))}
+            <span>구현 기능</span>
+            <ol>
+              {data.content.function.map((f) => (
+                <li>{f}</li>
+              ))}
+            </ol>
+            {data.content.explanation.map((d) => (
+              <p>{d}</p>
+            ))}
+          </Text>
+        </TextBox>
+      </ContentWrapper>
     </Container>
   );
 }
 
 const Container = styled.div`
+  padding: 100px 0;
+  /* padding: 50px 180px 0 0; */
+  /* height: 3000px;  */
+`;
+const ContentWrapper = styled.div`
   padding: 50px 180px 0 0;
   height: 3000px;
 `;
@@ -33,11 +64,12 @@ const BoxWrapper = styled.div`
   align-self: flex-start;
   top: 100px;
 `;
-const ImgBox = styled.div<{ sample: string }>`
+const ImgBox = styled.div<{ sample: {} }>`
   background-image: url(${sample});
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
+  margin-right: 30px;
 `;
 const TextBox = styled.div`
   display: flex;
@@ -55,6 +87,9 @@ const Text = styled.div`
   span {
     font-size: 16px;
     font-weight: bold;
+  }
+  p {
+    white-space: pre-line;
   }
 `;
 

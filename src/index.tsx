@@ -47,7 +47,7 @@ body {
   line-height: 1;
 }
 menu, ol, ul {
-  list-style: none;
+  /* list-style: none; */
 }
 blockquote, q {
   quotes: none;

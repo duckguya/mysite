@@ -4,15 +4,20 @@ import styled from "styled-components";
 import { isVisibleState } from "../atoms";
 import sample from "../assets/images/test2.png";
 import { useState } from "react";
+import { PortfolioContent } from "../utils/PortfolioContent";
+import ProjectDetail from "./ProjectDetail";
 
 function ProjectList() {
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useRecoilState(isVisibleState);
   const [isInfo, setIsInfo] = useState(false);
+  const [datas, setDatas] = useState(PortfolioContent);
+  const [detailId, setDetailId] = useState<number | null>(null);
 
-  const onClicked = () => {
-    navigate("/project/1");
+  const onClicked = (id: number) => {
+    setDetailId(id);
     setIsVisible(false);
+    navigate(`/project/${id}`);
   };
 
   const onMouseOver = () => {
@@ -24,33 +29,34 @@ function ProjectList() {
   };
 
   return (
-    <Container>
-      {/* <button onClick={onClicked}>Project</button> */}
-      <Box
-        sample={sample}
-        onMouseOver={onMouseOver}
-        onMouseOut={onMouseOut}
-        onClick={onClicked}
-      >
-        {/* {isInfo && ( */}
-        <Info>
-          <Title>Project's name</Title>
-          <Overview>Overview</Overview>
-          <TagWrapper>
-            <Tag>tag1</Tag>
-            <Tag>tag2</Tag>
-            <Tag>tag3</Tag>
-          </TagWrapper>
-        </Info>
-        {/* )} */}
-      </Box>
-      <Box sample={sample}>2</Box>
-      <Box sample={sample}>3</Box>
-      <Box sample={sample}>4</Box>
-      <Box sample={sample}>5</Box>
-      <Box sample={sample}>5</Box>
-      <Box sample={sample}>5</Box>
-    </Container>
+    <>
+      <Container>
+        {/* <button onClick={onClicked}>Project</button> */}
+        {datas.map((data, index) => (
+          <Box
+            key={index}
+            sample={data.images[0]}
+            onMouseOver={onMouseOver}
+            onMouseOut={onMouseOut}
+            onClick={() => onClicked(data.id)}
+          >
+            {/* {isInfo && ( */}
+            <Info>
+              <Title>{data.title}</Title>
+              <Overview>{data.about}</Overview>
+              <TagWrapper>
+                {data.technologies.map((tech, index) => (
+                  <Tag key={index}>{tech}</Tag>
+                ))}
+              </TagWrapper>
+            </Info>
+            {/* )} */}
+          </Box>
+        ))}
+      </Container>
+
+      {detailId && <ProjectDetail />}
+    </>
   );
 }
 
@@ -64,8 +70,8 @@ const Box = styled.div<{ sample: string }>`
   background-size: cover;
   /* background-position: center center; */
   transform-origin: center center;
-  height: 300px;
-  width: 250px;
+  height: 400px;
+  width: 450px;
   margin: 10px;
   border-radius: 5px;
   display: flex;
@@ -88,17 +94,14 @@ const Info = styled.div`
   justify-content: flex-end;
   padding: 30px;
   height: 100%;
-  /* background-color: black; */
+  opacity: 0;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
   transform: translateY(120px);
   transition: all 0.8s;
   &:hover {
+    opacity: 1;
     transform: translateY(0px);
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.8)
-    );
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
   }
 `;
 
@@ -107,20 +110,21 @@ const Title = styled.div`
   font-size: 25px;
 `;
 const Overview = styled.div`
-  color: #d5d5d5;
+  color: white;
   font-size: 13px;
   padding: 6px 0;
 `;
 const TagWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 const Tag = styled.div`
   background-color: #696869;
   color: white;
   border-radius: 10px;
-  padding: 5px;
+  padding: 3px 5px;
   font-size: 11px;
-  margin: 0 3px;
+  margin: 3px 3px;
 `;
 
 export default ProjectList;

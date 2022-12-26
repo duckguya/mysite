@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { isVisibleState } from "../atoms";
+import { isVisibleState, navActiveState } from "../atoms";
 
 function Header() {
   const [isVisible, setIsVisible] = useRecoilState(isVisibleState);
-  const [btnActive, setBtnActive] = useState(0);
+  const [btnActive, setBtnActive] = useRecoilState(navActiveState);
 
   const categories = [
     { id: 1, name: "Home", linkName: "/" },

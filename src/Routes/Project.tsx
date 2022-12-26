@@ -4,8 +4,12 @@ import { isVisibleState } from "../atoms";
 import ProjectDetail from "../Components/ProjectDetail";
 import ProjectList from "../Components/ProjectList";
 
-const Container = styled.div<{ isvisible: boolean }>`
-  padding: ${(props) => (props.isvisible ? "100px" : "50px")};
+// const Container = styled.div<{ isvisible: boolean }>`
+//   padding: ${(props) => (props.isvisible ? "100px" : "50px")};
+// `;
+
+const Container = styled.div`
+  padding: 100px;
 `;
 
 function Project() {
@@ -13,10 +17,13 @@ function Project() {
 
   return (
     <>
-      <Container isvisible={isVisible}>
-        {isVisible && <ProjectList />}
+      <Container>
+        <ProjectList />
       </Container>
-      {!isVisible && <ProjectDetail />}
+      {/* <Container isvisible={isVisible}>
+        {isVisible && <ProjectList />}
+      </Container> */}
+      {/* {!isVisible && <ProjectDetail />} */}
     </>
   );
 }
