@@ -47,7 +47,7 @@ body {
   line-height: 1;
 }
 menu, ol, ul {
-  /* list-style: none; */
+  list-style: none;
 }
 blockquote, q {
   quotes: none;
@@ -66,7 +66,8 @@ table {
 }
 body {
   font-weight: 300;
-  font-family: 'Source Sans Pro', sans-serif;
+  /* font-family: 'Source Sans Pro', sans-serif; */
+  font-family: "Noto Sans KR", sans-serif;
   background-color: ${(props) => props.theme.backColor};
   line-height: 1.2;
   overflow-x:hidden // 가로 스크롤바 없애기

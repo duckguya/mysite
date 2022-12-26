@@ -28,7 +28,7 @@ export const PortfolioContent = [
     id: 0,
     title: "Netflix clone",
     technologies: ["Javascript", "React", "Typescript", "styled-component"],
-    about: "TMDB API를 이용하여 영화,드라마 리스트 페이지 구현하기",
+    about: "TMDB API를 이용하여 영화, 드라마 페이지 구현하기",
     content: {
       function: [
         "영화 리스트 페이지",
