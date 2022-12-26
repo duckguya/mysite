@@ -26,7 +26,7 @@ function ProjectDetail() {
             <a href={data.link} title={"잘부탁드립니다!"} target="_blank">
               Demo &gt;
             </a>
-            <p>{data.title}</p>
+            <Title>{data.title}</Title>
             <span>{data.about}</span>
           </Header>
           <TechWrapper>
@@ -41,14 +41,35 @@ function ProjectDetail() {
           </TechWrapper>
           <SkillWarpper>
             <span>구현 기능</span>
-            <ul>
+            {/* <ul>
               {data.content.function.map((f, index) => (
+                <li key={index}>{f}</li>
+              ))}
+            </ul> */}
+            <ul>
+              {data.function.map((f, index) => (
                 <li key={index}>{f}</li>
               ))}
             </ul>
           </SkillWarpper>
         </TextWrapper>
-        <ScrollWrapper>
+
+        {/* <ScrollWrapper> */}
+        {data.contents.map((content, index) => (
+          <ScrollWrapper>
+            <ImgWrapper>
+              <ImgBox key={index} sample={content.image} />
+            </ImgWrapper>
+            <Explanation>
+              <div />
+              <p>{content.text}</p>
+              <div />
+            </Explanation>
+          </ScrollWrapper>
+        ))}
+        {/* </ScrollWrapper> */}
+
+        {/* <ScrollWrapper>
           <ImgWrapper>
             {data.images.map((d, index) => (
               <ImgBox key={index} sample={d} />
@@ -59,9 +80,8 @@ function ProjectDetail() {
             {data.content.explanation.map((d, index) => (
               <p key={index}>{d}</p>
             ))}
-            {/* <div></div> */}
           </Explanation>
-        </ScrollWrapper>
+        </ScrollWrapper> */}
       </ContentWrapper>
     </Container>
   );
@@ -71,6 +91,18 @@ const Container = styled.div`
   padding: 100px 0;
   /* padding: 50px 180px 0 0; */
   /* height: 3000px;  */
+  font-size: 21px;
+  @media screen and (max-width: 768px) {
+    font-size: 11px;
+  }
+`;
+const Title = styled.div`
+  font-size: 80px;
+  font-weight: 500;
+  padding-bottom: 10px;
+  @media screen and (max-width: 768px) {
+    font-size: 40px;
+  }
 `;
 const ContentWrapper = styled.div`
   padding-top: 50px;
@@ -103,13 +135,13 @@ const Header = styled.div`
       color: gray;
     }
   }
-  p {
+  /* p {
     font-size: 80px;
     font-weight: 500;
     padding-bottom: 10px;
-  }
+  } */
   span {
-    font-size: 20px;
+    /* font-size: 20px; */
     padding-left: 10px;
     /* color: #86868b; */
     /* font-weight: 300; */
@@ -121,25 +153,28 @@ const TechWrapper = styled.div`
   justify-content: flex-start;
   padding: 50px 0;
   span {
-    font-size: 21px;
+    /* font-size: 21px; */
     padding-right: 5px;
     font-weight: 500;
   }
   p {
-    font-size: 21px;
+    /* font-size: 21px; */
     padding-left: 5px;
     color: #86868b;
     font-weight: 500;
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 
 const SkillWarpper = styled.div`
   span {
-    font-size: 21px;
+    /* font-size: 21px; */
     font-weight: 500;
   }
   ul {
-    font-size: 21px;
+    /* font-size: 21px; */
     font-weight: 500;
     color: #86868b;
     padding-top: 10px;
@@ -152,41 +187,57 @@ const SkillWarpper = styled.div`
 
 const ScrollWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   width: 80%;
-  /* height: 1000px; */
-  @media screen and (max-width: 1200px) {
-    display: block;
+  margin-bottom: 200px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    width: 60%;
   }
 `;
 const ImgWrapper = styled.div`
-  width: 716px;
-  height: 519px;
+  display: flex;
+  /* width: 716px;
+  height: 519px; */
   /* overflow: hidden; */
   position: sticky;
   align-self: flex-start;
   top: 150px;
+  @media screen and (max-width: 768px) {
+    position: static;
+  }
 `;
 const ImgBox = styled.div<{ sample: {} }>`
+  width: 716px;
+  height: 519px;
   background-image: url(${(props) => props.sample});
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100%;
+  /* height: 100%; */
   margin: 0 30px 30px 0;
   /* margin-right: 30px; */
   border: 5px solid black;
   box-shadow: 0px 20px 10px -15px #404040;
+  @media screen and (max-width: 768px) {
+    width: 216px;
+    height: 119px;
+  }
 `;
 const Explanation = styled.div`
   white-space: pre-line;
   width: 30%;
+  overflow: hidden;
   div {
-    height: 300px;
+    height: 30px;
   }
   p {
-    font-size: 21px;
     font-weight: 500;
     line-height: 30px;
+    &:first-child::first-letter {
+      font-size: 30px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
   }
 `;
 

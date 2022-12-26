@@ -107,7 +107,8 @@ const Info = styled.div`
 
 const Title = styled.div`
   color: white;
-  font-size: 25px;
+  font-size: 30px;
+  font-weight: 500;
 `;
 const Overview = styled.div`
   color: white;
@@ -122,7 +123,7 @@ const Tag = styled.div`
   background-color: #696869;
   color: white;
   border-radius: 10px;
-  padding: 3px 5px;
+  padding: 3px 5px 5px 5px;
   font-size: 11px;
   margin: 3px 3px;
 `;
