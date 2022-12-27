@@ -97,7 +97,7 @@ const Info = styled.div`
   opacity: 0;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
   transform: translateY(120px);
-  transition: all 0.8s;
+  transition: all 1s;
   &:hover {
     opacity: 1;
     transform: translateY(0px);

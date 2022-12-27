@@ -14,3 +14,9 @@ export const navActiveState = atom({
   default: 0,
   effects_UNSTABLE: [persistAtom],
 });
+
+export const navState = atom({
+  key: "navState",
+  default: "/",
+  effects_UNSTABLE: [persistAtom],
+});

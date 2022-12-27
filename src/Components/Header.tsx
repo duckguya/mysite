@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { isVisibleState, navActiveState } from "../atoms";
+import { isVisibleState, navActiveState, navState } from "../atoms";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 function Header() {
   const [isVisible, setIsVisible] = useRecoilState(isVisibleState);
   const [btnActive, setBtnActive] = useRecoilState(navActiveState);
+  const [state, setState] = useRecoilState(navState);
+  const location = useLocation();
 
   const categories = [
     { id: 1, name: "Home", linkName: "/" },
@@ -17,9 +19,18 @@ function Header() {
     { id: 4, name: "Resume", linkName: "/resume" },
   ];
 
-  const onClicked = (idx: number) => {
-    setBtnActive(idx);
-    setIsVisible(true);
+  useEffect(() => {
+    // let path = location.pathname.slice(1);
+    let path = location.pathname;
+    if (location.pathname === "/") setState(path);
+    if (location.pathname === "/project") setState(path);
+    if (location.pathname === "/about") setState(path);
+  }, [state]);
+
+  const onClicked = (name: string) => {
+    // setBtnActive(idx);
+    // setIsVisible(true);
+    setState(name);
   };
 
   return (
@@ -28,9 +39,9 @@ function Header() {
         <Link key={idx} to={category.linkName}>
           <Tab
             value={idx}
-            className={idx === btnActive ? " active" : ""}
+            className={category.linkName == state ? " active" : ""}
             // onClick={() => toggleActive}
-            onClick={() => onClicked(idx)}
+            onClick={() => onClicked(category.name)}
           >
             {category.name}
           </Tab>
@@ -46,15 +57,12 @@ const Nav = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* box-shadow: 5px 5px 5px 5px #dcdcdc; */
   border-bottom: 1px solid #dcdcdc;
-
   position: fixed;
   width: 100%;
   background-color: ${(props) => props.theme.backColor};
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(5px);
-
   z-index: 99;
 `;
 const Tab = styled.button`

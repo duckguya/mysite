@@ -22,7 +22,7 @@ const Container = styled.footer`
   transform: translateY(-100%);
   font-size: 13px;
   div {
-    padding: 10px;
+    /* padding: 10px; */
     font-weight: 400;
     letter-spacing: 3px;
   }

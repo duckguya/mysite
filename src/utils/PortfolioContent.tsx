@@ -42,9 +42,9 @@ export const PortfolioContent = [
     link: "https://duckguya.github.io/netflix-clone/#/",
     function: [
       "영화/드라마 리스트 페이지",
-      "영화 디테일 페이지(내가 선택한 영화와 비슷한 콘텐츠 리스트, 내가 선택한 영화 예고편)",
+      "영화 디테일 페이지(내가 선택한 콘텐츠와 비슷한 콘텐츠 리스트, 내가 선택한 영화 예고편)",
       "검색 페이지",
-      "react-loading-skeleton으로 로딩화면",
+      "react-loading-skeleton으로 로딩화면 구현",
       "error page",
     ],
     contents: [
@@ -91,6 +91,7 @@ export const PortfolioContent = [
       {
         image: net5,
         text: `Error Page
+        에러가 날 경우 사용자들이 혼란스러워하지 않게 에러 컴포넌트를 만들어주었습니다. 새로고침을 유도하도록 문구를 적고 아래 버튼을 달아줬습니다.
         `,
       },
     ],
