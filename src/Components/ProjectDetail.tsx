@@ -233,7 +233,7 @@ const Explanation = styled.div`
     line-height: 30px;
     &:first-line {
       font-size: 30px;
-      padding-bottom: 10px;
+      line-height: 50px;
     }
   }
   @media screen and (max-width: 768px) {
