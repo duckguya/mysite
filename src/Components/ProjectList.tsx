@@ -64,6 +64,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  height: 100vh;
 `;
 const Box = styled.div<{ sample: string }>`
   background-image: url(${(props) => props.sample});

@@ -80,6 +80,9 @@ const Tab = styled.button`
   &:hover {
     color: ${(props) => props.theme.pointColor};
   }
+  &:active {
+    color: gray;
+  }
   &.active {
     color: ${(props) => props.theme.pointColor};
   }

@@ -6,5 +6,6 @@ export const theme: DefaultTheme = {
   pointBackColor: "#3c245c",
   // mainColor: "#1130c4",
   mainColor: "#06c",
-  pointColor: "#ca1e20",
+  pointColor: "#dd5f24",
+  // pointColor: "#ca1e20",
 };
