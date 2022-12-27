@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { isVisibleState, navActiveState } from "../atoms";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 function Header() {
   const [isVisible, setIsVisible] = useRecoilState(isVisibleState);
@@ -34,16 +36,25 @@ function Header() {
           </Tab>
         </Link>
       ))}
+      <a href="https://github.com/duckguya" target="_blank">
+        <FontAwesomeIcon icon={faGithub} color="black" />
+      </a>
     </Nav>
   );
 }
 const Nav = styled.nav`
   display: flex;
   justify-content: center;
-  box-shadow: 5px 5px 5px 5px #dcdcdc;
+  align-items: center;
+  /* box-shadow: 5px 5px 5px 5px #dcdcdc; */
+  border-bottom: 1px solid #dcdcdc;
+
   position: fixed;
   width: 100%;
   background-color: ${(props) => props.theme.backColor};
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+
   z-index: 99;
 `;
 const Tab = styled.button`

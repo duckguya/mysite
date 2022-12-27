@@ -15,10 +15,11 @@ const Container = styled.div`
 `;
 const Title = styled.nav`
   font-size: 150px;
-  text-shadow: 2px 2px 2px ${(props) => props.theme.mainColor};
+  font-weight: 700;
+  /* text-shadow: 2px 2px 2px ${(props) => props.theme.mainColor}; */
 `;
 const Content = styled.nav`
-  font-size: 20px;
+  font-size: 15px;
   color: #545454;
 `;
 export default Home;

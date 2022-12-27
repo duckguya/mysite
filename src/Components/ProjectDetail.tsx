@@ -5,7 +5,6 @@ import {
   IGetPortfolioDetail,
   PortfolioContent,
 } from "../utils/PortfolioContent";
-import ReactPlayer from "react-player/lazy";
 
 interface IProps {
   data?: IGetPortfolioDetail;
@@ -58,10 +57,10 @@ function ProjectDetail() {
         {data.contents.map((content, index) => (
           <ScrollWrapper>
             <ImgWrapper>
-              <ImgBox key={index} sample={content.image} />
+              <ImgBox key={index} image={content.image} />
             </ImgWrapper>
             <Explanation>
-              <div />
+              {/* <div /> */}
               <p>{content.text}</p>
               <div />
             </Explanation>
@@ -110,7 +109,7 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 3000px;
+  /* height: 3000px; */
 `;
 
 const TextWrapper = styled.div`
@@ -206,11 +205,11 @@ const ImgWrapper = styled.div`
     position: static;
   }
 `;
-const ImgBox = styled.div<{ sample: {} }>`
+const ImgBox = styled.div<{ image: {} }>`
   width: 716px;
-  height: 519px;
-  background-image: url(${(props) => props.sample});
-  background-size: cover;
+  height: 400px;
+  background-image: url(${(props) => props.image});
+  background-size: contain;
   background-repeat: no-repeat;
   /* height: 100%; */
   margin: 0 30px 30px 0;
@@ -232,8 +231,9 @@ const Explanation = styled.div`
   p {
     font-weight: 500;
     line-height: 30px;
-    &:first-child::first-letter {
+    &:first-line {
       font-size: 30px;
+      padding-bottom: 10px;
     }
   }
   @media screen and (max-width: 768px) {
