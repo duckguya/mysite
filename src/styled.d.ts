@@ -3,6 +3,7 @@ import "styled-components";
 declare module "styled-components" {
   export interface DefaultTheme {
     backColor: string;
+    pointBackColor: string;
     mainColor: string;
     pointColor: string;
     // dark: {

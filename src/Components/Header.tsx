@@ -34,7 +34,7 @@ function Header() {
   };
 
   return (
-    <Nav>
+    <Nav state={state}>
       {categories.map((category, idx) => (
         <Link key={idx} to={category.linkName}>
           <Tab
@@ -53,15 +53,20 @@ function Header() {
     </Nav>
   );
 }
-const Nav = styled.nav`
+const Nav = styled.nav<{ state: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #dcdcdc;
+  /* border-bottom: 1px solid #dcdcdc; */
+  border-bottom: 1px solid
+    ${(props) => (props.state === "/about" ? "transparent" : "#dcdcdc")};
   position: fixed;
   width: 100%;
-  background-color: ${(props) => props.theme.backColor};
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: ${(props) =>
+    props.state === "/about"
+      ? "rgba(0, 0, 0, 0.2)"
+      : "rgba(255, 255, 255, 0.8)"};
+  /* background-color: rgba(255, 255, 255, 0.8); */
   backdrop-filter: blur(5px);
   z-index: 99;
 `;
