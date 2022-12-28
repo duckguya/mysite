@@ -4,17 +4,6 @@ import net3 from "../assets/images/net3.gif";
 import net4 from "../assets/images/net4.png";
 import net5 from "../assets/images/net5.png";
 
-type portfoilo = [
-  {
-    id: number;
-    title: string;
-    technologies: string[];
-    about: string;
-    content: { function: string[]; explanation: string[] };
-    images: string[];
-  }
-];
-
 class Portfolio {
   id!: number;
   title!: string;
@@ -27,6 +16,14 @@ class Portfolio {
 
 export interface IGetPortfolioDetail extends Portfolio {}
 
+class About {
+  name!: string;
+  description!: string;
+  techStack!: string;
+  techDescription!: string[];
+}
+export interface IGetAbout extends About {}
+
 export const PortfolioContent = [
   {
     id: 0,
@@ -38,7 +35,7 @@ export const PortfolioContent = [
       "styled-component",
       "react-query",
     ],
-    about: "TMDB API를 이용하여 영화, 드라마 페이지 구현하기",
+    description: "TMDB API를 이용하여 영화, 드라마 페이지 구현하기",
     link: "https://duckguya.github.io/netflix-clone/#/",
     function: [
       "영화/드라마 리스트 페이지",
@@ -98,26 +95,63 @@ export const PortfolioContent = [
 
     images: [net1],
   },
-  //   {
-  //     id: 1,
-  //     title: "Netflix clone",
-  //     technologies: ["Javascript", "React", "Typescript", "styled-component"],
-  //     about:
-  //       "a sharp or sudden cry; a word, phrase, or sound that expresses a strong emotion",
-  //     link: "",
-  //     content: {
-  //       function: [
-  //         "TMDB API 호출하여 영화 데이터 가져오기",
-  //         "영화 리스트 페이지",
-  //         "영화 디테일 페이지(내가 선택한 영화와 비슷한 콘텐츠 리스트, 내가 선택한 영화 예고편)",
-  //         "영화 검색 페이지",
-  //         "내가 선택한 영화와 비슷한 콘텐츠 리스트",
-  //         "react-loading-skeleton으로 로딩화면",
-  //         "error page",
-  //       ],
-  //       explanation: [""],
-  //     },
+];
 
-  //     images: [net1, sample2],
-  //   },
+export const AboutExperience = [
+  {
+    name: "리딩퍼센트",
+    description:
+      "유저의 영어 학습을 도와주는 애플리케이션입니다. 등급 별 구독권을 결제합니다. 쿠폰을 사용할 수 있습니다. 기간 안에 학습하지 않으면 기록이 리셋되는 옵션을 가지고 있습니다.",
+    techStack:
+      "Adonis.js, MySQL, Docker, NCP-Object Storage, Cloud Outbound Mailer, Simple&Easy Notification Service, React.js, styled-component",
+    techDescription: [
+      "RESTful API 설계",
+      "애플리케이션 관리를 위한 관리자 페이지 개발",
+    ],
+  },
+  {
+    name: "ASK Korea",
+    description: "외국인을 대상으로한 지식in 서비스",
+    techStack: "Adonis.js, MySQL, AWS S3",
+    techDescription: ["RESTful API 개발"],
+  },
+  {
+    name: "아르고스 VMA",
+    description: "QRCode를 통한 체크인, 체크아웃 방문객 관리 시스템",
+    techStack: "Adonis.js, Next.js, AWS S3, SES",
+    techDescription: [
+      "RESTful API 개발",
+      "애플리케이션 관리를 위한 관리자 페이지 개발",
+    ],
+  },
+  {
+    name: "업테크 트레이닝",
+    description: "키오스크 업체 사이트 제작",
+    techStack: "Node.js, Firebase, AWS S3, SES, React.js, Next.js",
+    techDescription: [
+      "firebase 기반 Restful API 개발",
+      "React.js, Next.js 기반 관리자 페이지 개발",
+    ],
+  },
+  {
+    name: "페이체크",
+    description: "출/퇴근 관리 서비스",
+    techStack: "Python Flask, PostgreSql, React.js, Next.js",
+    techDescription: [
+      "PostgreSql 기반 클라이언트 관리자 Restful API 개발",
+      "React.js, Next.js 기반 클라이언트 관리자 페이지 개발",
+    ],
+  },
+  {
+    name: "알림서랍",
+    description: "사용자의 취향을 학습해 알림을 분류하고 보여주는 애플리케이션",
+    techStack: "Python Django",
+    techDescription: ["Restful API 개발"],
+  },
+  {
+    name: "로아인텔리전스",
+    description: "기사 빅데이터 사이트 관리자 페이지 제작",
+    techStack: "React.js, Next.js",
+    techDescription: ["React.js, Next.js 기반 관리자 페이지 개발"],
+  },
 ];

@@ -26,7 +26,7 @@ function ProjectDetail() {
               Demo &gt;
             </a>
             <Title>{data.title}</Title>
-            <span>{data.about}</span>
+            <span>{data.description}</span>
           </Header>
           <TechWrapper>
             <span>사용 기술</span>
@@ -126,6 +126,7 @@ const TechWrapper = styled.div`
   p {
     color: #86868b;
     font-weight: 500;
+    padding-right: 5px;
   }
   @media screen and (max-width: 768px) {
     flex-direction: column;

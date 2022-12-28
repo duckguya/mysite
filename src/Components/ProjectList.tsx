@@ -43,7 +43,7 @@ function ProjectList() {
             {/* {isInfo && ( */}
             <Info>
               <Title>{data.title}</Title>
-              <Overview>{data.about}</Overview>
+              <Overview>{data.description}</Overview>
               <TagWrapper>
                 {data.technologies.map((tech, index) => (
                   <Tag key={index}>{tech}</Tag>
