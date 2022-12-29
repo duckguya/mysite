@@ -49,14 +49,11 @@ export const PortfolioContent = [
         image: net1,
         text: `Content List
         모든 페이지의 레이아웃 배치는 flex를 사용했습니다.
-        메인 상단부분은 현재 상영 중인 영화 리스트에서 첫 번째 영화를 선택하여 배치했습니다.
-        영화 리스트는 현재 상영 중인, 가장 인기 있는, 개봉 예정인 영화 리스트를 호출했습니다. 쿼리에 language를 넣어 한국어로 된 영화 리스트를 받을 수 있게 요청했습니다.
-        영화에 마우스 오버를 하면 영화의 제목과 별점이 나타납니다.
         carousel을 구현하기 위해 react-slick 라이브러리를 사용했습니다. 기본 carousel에서 넷플릭스와 어울리도록 커스터마이징을 하였습니다.\n
         영화 페이지와 티비쇼 페이지의 레이아웃이 같기 때문에 하나의 컴포넌트로 어떻게 재활용 할지 고민했습니다.
         시작부터 깔끔히 코드를 짜야 한다는 생각에 집중하다 보니 오히려 코드가 정리되지 않았습니다. 그래서 각각의 컴포넌트를 만들고 후반에 정리하는 작업을 했습니다.
-        각각 라우터를 만들어주고 하나의 리스트 컴포넌트를 연결해 주었습니다. props에 type을 줘서 tv, movie를 구분할 수 있게 했습니다.
-        컴포넌트를 통합하고 나니 css를 수정해도 같이 반영되어 훨씬 유용하게 사용할 수 있었습니다.
+        각각 라우터를 만들어주고 하나의 컴포넌트에 연결해 주었습니다. props에 type을 줘서 tv, movie를 구분을 주었습니다.
+        컴포넌트를 통합하고 나니 css 작업을 효율적으로 할 수 있게되었습니다. 중복되는 코드를 자동화하여 코드를 개선시켰습니다.
         `,
       },
       {
@@ -99,43 +96,53 @@ export const PortfolioContent = [
 
 export const AboutExperience = [
   {
-    name: "리딩퍼센트",
+    name: "리딩퍼센트 (back-end, front-end 관리자 페이지)",
     description:
-      "유저의 영어 학습을 도와주는 애플리케이션입니다. 등급 별 구독권을 결제합니다. 쿠폰을 사용할 수 있습니다. 기간 안에 학습하지 않으면 기록이 리셋되는 옵션을 가지고 있습니다.",
+      "유저의 영어 학습을 도와주는 애플리케이션입니다. 등급 별 구독권을 결제합니다. 쿠폰을 사용할 수 있습니다. 기간 안에 학습하지 않으면 기록이 리셋되는 옵션을 가지고 있습니다. 시니어 백엔드 개발자와 시니어 프론트엔드 개발자 총 세명이서 프로젝트를 진행했습니다. 제가 맡은 역할은 주로 기술환경을 구축하고 seed파일로 더메 데이터를 생성하여 테스트를 바로 할 수 있도록 백업하였습니다.",
     techStack:
       "Adonis.js, MySQL, Docker, NCP-Object Storage, Cloud Outbound Mailer, Simple&Easy Notification Service, React.js, styled-component",
     techDescription: [
+      "백엔드/프론트엔드 기술환경 구축",
       "RESTful API 설계",
       "애플리케이션 관리를 위한 관리자 페이지 개발",
+      "ncp를 이용하여 비밀번호 수정을 위한 메일 전송",
+      "ncp를 이용하여 알림 서비스 개발",
+      "db migration 사용으로 데이터 수정하며 seed파일 생성 후 더미 데이터 생성",
     ],
   },
   {
-    name: "ASK Korea",
+    name: "ASK Korea (back-end)",
     description: "외국인을 대상으로한 지식in 서비스",
     techStack: "Adonis.js, MySQL, AWS S3",
-    techDescription: ["RESTful API 개발"],
+    techDescription: ["백엔드 기술환경 구축", "db 설계", "RESTful API 개발"],
   },
   {
-    name: "아르고스 VMA",
-    description: "QRCode를 통한 체크인, 체크아웃 방문객 관리 시스템",
+    name: "아르고스 VMA (back-end)",
+    description:
+      "QRCode를 통한 체크인, 체크아웃 방문객 관리 시스템. 시니어 개발자와 협업하여 진행하였습니다.",
     techStack: "Adonis.js, Next.js, AWS S3, SES",
     techDescription: [
+      "백엔드/프론트엔드 기술환경 구축",
       "RESTful API 개발",
+      "AWS를 이용한 메일 전송 및 파일 저장 기능 구현",
       "애플리케이션 관리를 위한 관리자 페이지 개발",
     ],
   },
   {
-    name: "업테크 트레이닝",
+    name: "업테크 트레이닝 (back-end, front-end 관리자 페이지)",
     description: "키오스크 업체 사이트 제작",
     techStack: "Node.js, Firebase, AWS S3, SES, React.js, Next.js",
     techDescription: [
       "firebase 기반 Restful API 개발",
       "React.js, Next.js 기반 관리자 페이지 개발",
+      "AWS를 이용한 메일 전송 및 파일 저장 기능 구현",
+      "ant design을 이용하여 관리자 페이지 디자인 개발",
     ],
   },
   {
-    name: "페이체크",
-    description: "출/퇴근 관리 서비스",
+    name: "페이체크 (back-end, front-end 관리자 페이지)",
+    description:
+      "출/퇴근 관리 서비스. 시니어 개발자와 협업하여 진행하였습니다.",
     techStack: "Python Flask, PostgreSql, React.js, Next.js",
     techDescription: [
       "PostgreSql 기반 클라이언트 관리자 Restful API 개발",
@@ -143,15 +150,19 @@ export const AboutExperience = [
     ],
   },
   {
-    name: "알림서랍",
-    description: "사용자의 취향을 학습해 알림을 분류하고 보여주는 애플리케이션",
+    name: "알림서랍 (back-end)",
+    description:
+      "사용자의 취향을 학습해 알림을 분류하고 보여주는 애플리케이션. 시니어 개발자와 협업하여 진행하였습니다.",
     techStack: "Python Django",
-    techDescription: ["Restful API 개발"],
+    techDescription: ["Restful API 개발", "Daum API를 이용한 주소 찾기 구현"],
   },
   {
-    name: "로아인텔리전스",
+    name: "로아인텔리전스 (front-end 관리자 페이지)",
     description: "기사 빅데이터 사이트 관리자 페이지 제작",
     techStack: "React.js, Next.js",
-    techDescription: ["React.js, Next.js 기반 관리자 페이지 개발"],
+    techDescription: [
+      "React.js, Next.js 기반 관리자 페이지 개발",
+      "ant design을 이용하여 관리자 페이지 디자인 개발",
+    ],
   },
 ];

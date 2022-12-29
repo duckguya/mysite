@@ -16,7 +16,7 @@ function Header() {
     { id: 1, name: "Home", linkName: "/" },
     { id: 2, name: "Project", linkName: "/project" },
     { id: 3, name: "About", linkName: "/about" },
-    { id: 4, name: "Resume", linkName: "/resume" },
+    // { id: 4, name: "Resume", linkName: "/resume" },
   ];
 
   useEffect(() => {
@@ -57,16 +57,16 @@ const Nav = styled.nav<{ state: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-bottom: 1px solid #dcdcdc; */
-  border-bottom: 1px solid
-    ${(props) => (props.state === "/about" ? "transparent" : "#dcdcdc")};
+  border-bottom: 1px solid #dcdcdc;
+  /* border-bottom: 1px solid */
+  /* ${(props) => (props.state === "/about" ? "transparent" : "#dcdcdc")}; */
   position: fixed;
   width: 100%;
-  background-color: ${(props) =>
+  /* background-color: ${(props) =>
     props.state === "/about"
       ? "rgba(0, 0, 0, 0.2)"
-      : "rgba(255, 255, 255, 0.8)"};
-  /* background-color: rgba(255, 255, 255, 0.8); */
+      : "rgba(255, 255, 255, 0.8)"}; */
+  background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(5px);
   z-index: 99;
 `;

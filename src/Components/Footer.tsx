@@ -22,10 +22,11 @@ const Container = styled.footer<{ state: string }>`
   justify-content: center;
   align-items: center;
   margin: 10px 0;
-  color: ${(props) => (props.state === "/about" ? "white" : "black")};
+  /* color: ${(props) => (props.state === "/about" ? "white" : "black")}; */
+  color: black;
   transform: translateY(-100%);
   font-size: 13px;
-  margin-top: 100px;
+  /* margin-top: 50px; */
   div {
     padding-right: 5px;
     font-weight: 400;
