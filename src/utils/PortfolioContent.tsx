@@ -3,6 +3,12 @@ import net2 from "../assets/images/net2.gif";
 import net3 from "../assets/images/net3.gif";
 import net4 from "../assets/images/net4.png";
 import net5 from "../assets/images/net5.png";
+import todo_thumbnail from "../assets/images/todo_thumbnail.png";
+import todo1 from "../assets/images/todo_darkmode.gif";
+import todo2 from "../assets/images/todo_create.gif";
+import todo3 from "../assets/images/todo_update.gif";
+import todo4 from "../assets/images/todo_delete.gif";
+import todo5 from "../assets/images/todo_category.gif";
 
 class Portfolio {
   id!: number;
@@ -11,7 +17,7 @@ class Portfolio {
   about!: string;
   link!: string;
   content!: { function: string[]; explanation: string[] };
-  images!: string[];
+  thumbnail!: string;
 }
 
 export interface IGetPortfolioDetail extends Portfolio {}
@@ -28,13 +34,7 @@ export const PortfolioContent = [
   {
     id: 0,
     title: "Netflix clone",
-    technologies: [
-      "Javascript",
-      "React",
-      "Typescript",
-      "styled-component",
-      "react-query",
-    ],
+    technologies: ["React", "Typescript", "styled-component", "react-query"],
     description: "TMDB API를 이용하여 영화, 드라마 페이지 구현하기",
     link: "https://duckguya.github.io/netflix-clone/#/",
     function: [
@@ -90,7 +90,76 @@ export const PortfolioContent = [
       },
     ],
 
-    images: [net1],
+    thumbnail: net1,
+  },
+  {
+    id: 1,
+    title: "To Do List",
+    technologies: [
+      "React",
+      "Typescript",
+      "styled-component",
+      "Recoil",
+      "Localstorage",
+    ],
+    description: "리액트 토이프로젝트 ToDoList 구현하기",
+    link: "https://duckguya.github.io/to-do-list/#/",
+    function: [
+      "Recoil을 이용한 다크 모드 구현",
+      "ToDo 생성",
+      "ToDo 수정",
+      "ToDo 삭제",
+      "recoil selector를 이용한 ToDo 카테고리 변경",
+    ],
+    contents: [
+      {
+        image: todo1,
+        text: `다크 모드
+        Recoil을 사용하여 atom의 값에 따라 다크 모드와 라이트 모드가 변경되도록 구현하였습니다. atom의 기본값은 boolean 타입으로 지정해 주었습니다.
+        ThemeProvider를 다크 모드가 필요한 컴포넌트 위에 래핑 해주어 atom의 값이 변경되면 미리 설정해놓은 스타일 객체를 적용시켜 전역으로 theme의 스타일을 사용할 수 있게 하였습니다.
+
+        useRecoilState을 사용하여 다크 모드 버튼을 누르면 현재 값의 반대 값으로 변경시켜 값을 업데이트했습니다. 해당 atom을 구독하고 있던 ThemeProvider에 theme의 값이 변경되어 다크 모드와 라이트 모드를 사용할 수 있게 하였습니다.
+        `,
+      },
+      {
+        image: todo2,
+        text: `ToDo 생성
+        생성한 투두를 바로 볼 수 있게 상태 관리 라이브러리인 recoil을 사용하였습니다.
+        ToDo 저장 버튼 클릭 시 recoil atom의 state 값을 업데이트하기 위해 useSetRecoilState 함수를 사용하였습니다. 리턴된 setter 함수에 작성한 toDo와 카테고리 위치 그리고 id를 넣어주었습니다. id는 Date 함수로 밀리 초를 사용하여 유니크한 값을 사용할 수 있게 하였습니다.
+
+        저장 및 상태 동기화를 위해 Recoil-persist 라이브러리를 사용하였습니다.
+        localstorage에 저장하기 위해 아무런 설정을 해주지 않았습니다.
+
+        useForm hook을 사용하여 input에서 값을 불러오고 유효성 검사를 하였습니다. register 메소드를 사용하여 검증 규칙을 적용할 수 있게 하였습니다.
+        uesFormState hook으로부터 받은 errors 객체를 이용해 에러가 날 경우 필요한 문구를 내보내어 사용자가 문제를 인식할 수 있게 하였습니다.
+        유효성 검사를 통과하면 handleSubmit함수를 사용하여 form의 데이터를 매개변수로 전달받아 사용하였습니다.
+        `,
+      },
+      {
+        image: todo3,
+        text: `ToDo 수정
+        컴포넌트 상태 관리를 위하여 리액트의 Hook인 useState를 사용하였습니다.
+        useState를 이용해 boolean 타입인 isEdit 변수를 만들고 값에 따라 수정 페이지가 나타나도록 하였습니다.
+        useRecoilState 함수를 사용하여 setter 함수를 받아 업데이트하였습니다.
+        스프레드 연산자로 기존 데이터를 복사한 후 findIndex 함수로 수정할 id와 같은 값을 찾아 index를 반환하였습니다. splice 함수로 해당 인덱스를 삭제해주고 slice 함수로 수정할 인덱스 앞뒤에 있는 데이터를 찾아주었습니다. 해당 값들을  스프레드 연산자로 넣어주고 가운데에 새 투두 데이터를 넣어주어 수정해 주었습니다.
+        `,
+      },
+      {
+        image: todo4,
+        text: `ToDo 삭제
+        스프레드 연산자를 이용하여 기존에 있던 데이터를 복사해 주었습니다. 그리고 findIndex 함수를 이용해 id 값이 동일한 데이터의 인덱스 값을 반환시켜줍니다. slice 함수를 이용하여 해당 인덱스 데이터를 삭제시킵니다.
+        `,
+      },
+      {
+        image: todo5,
+        text: `ToDo 카테고리 변경
+        recoil의 selector를 이용하여 카테고리 state가 변경되면 가져와야 할 ToDo 데이터를 변경할 수 있도록 처리하였습니다.
+        recoil atom을 이용하여 카테고리 state를 만들어주었습니다. 카테고리 변경 버튼을 누르면 useRecoilState로 카테고리 state를 변경합니다. 해당 atom이 변하면 toDoSelector가 업데이트됩니다. toDoSelector는 get을 통해 전처리한 toDoState와 categoryState를 가져옵니다. 그리고 filter 함수를 통해 같은 카테고리의 데이터를 리턴하여 재렌더링합니다.
+        `,
+      },
+    ],
+
+    thumbnail: todo_thumbnail,
   },
 ];
 

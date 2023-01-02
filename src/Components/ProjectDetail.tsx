@@ -168,9 +168,9 @@ const ImgWrapper = styled.div`
 `;
 const ImgBox = styled.div<{ image: {} }>`
   width: 716px;
-  height: 400px;
+  height: 410px;
   background-image: url(${(props) => props.image});
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   margin: 0 30px 30px 0;
   border: 5px solid black;

@@ -35,7 +35,7 @@ function ProjectList() {
         {datas.map((data, index) => (
           <Box
             key={index}
-            sample={data.images[0]}
+            thumbnail={data.thumbnail}
             onMouseOver={onMouseOver}
             onMouseOut={onMouseOut}
             onClick={() => onClicked(data.id)}
@@ -66,8 +66,8 @@ const Container = styled.div`
   justify-content: center;
   height: 100vh;
 `;
-const Box = styled.div<{ sample: string }>`
-  background-image: url(${(props) => props.sample});
+const Box = styled.div<{ thumbnail: string }>`
+  background-image: url(${(props) => props.thumbnail});
   background-size: cover;
   /* background-position: center center; */
   transform-origin: center center;
