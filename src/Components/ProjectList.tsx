@@ -69,8 +69,9 @@ const Container = styled.div`
 const Box = styled.div<{ thumbnail: string }>`
   background-image: url(${(props) => props.thumbnail});
   background-size: cover;
+  background-repeat: no-repeat;
   /* background-position: center center; */
-  transform-origin: center center;
+  /* transform-origin: center center; */
   height: 400px;
   width: 450px;
   margin: 10px;
@@ -82,8 +83,10 @@ const Box = styled.div<{ thumbnail: string }>`
   overflow: hidden;
   transition: all 0.4s;
   cursor: pointer;
+  box-shadow: 0 10px 10px 0px gray;
   &:hover {
     scale: 1.1;
+    box-shadow: 0 0px 0px 0px gray;
   }
 `;
 

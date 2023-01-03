@@ -9,6 +9,7 @@ import todo2 from "../assets/images/todo_create.gif";
 import todo3 from "../assets/images/todo_update.gif";
 import todo4 from "../assets/images/todo_delete.gif";
 import todo5 from "../assets/images/todo_category.gif";
+import coin_thumbnail from "../assets/images/coin_thumbnail.png";
 
 class Portfolio {
   id!: number;
@@ -160,6 +161,34 @@ export const PortfolioContent = [
     ],
 
     thumbnail: todo_thumbnail,
+  },
+  {
+    id: 2,
+    title: "Crypto Tracker",
+    technologies: [
+      "React",
+      "Typescript",
+      "styled-component",
+      "Recoil",
+      "Localstorage",
+    ],
+    description: "",
+    link: "",
+    function: [""],
+    contents: [
+      {
+        image: coin_thumbnail,
+        text: `
+        `,
+      },
+      {
+        image: coin_thumbnail,
+        text: `
+        `,
+      },
+    ],
+
+    thumbnail: coin_thumbnail,
   },
 ];
 
