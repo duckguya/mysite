@@ -17,7 +17,7 @@ function ProjectList() {
   const onClicked = (id: number) => {
     setDetailId(id);
     setIsVisible(false);
-    navigate(`/project/${id}`);
+    navigate(`/mysite/project/${id}`);
   };
 
   const onMouseOver = () => {

@@ -11,7 +11,7 @@ interface IProps {
 }
 
 function ProjectDetail() {
-  const detailMatch = useMatch("/project/:projectId");
+  const detailMatch = useMatch("/mysite/project/:projectId");
 
   const datas = PortfolioContent;
   const id = Number(detailMatch?.params.projectId);

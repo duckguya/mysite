@@ -87,7 +87,7 @@ function About() {
 
             <Hr />
 
-            <Link to={"/project"} onClick={() => onClicked("/project")}>
+            <Link to={`/mysite/project`} onClick={() => onClicked("/project")}>
               <p style={{ color: "#06c" }}>개인프로젝트 보러가기 &gt;</p>
             </Link>
           </ExperienceWrapper>

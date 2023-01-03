@@ -102,7 +102,7 @@ export const PortfolioContent = [
       "Recoil",
       "Localstorage",
     ],
-    description: "리액트 토이프로젝트 ToDoList 구현하기",
+    description: "개인 프로젝트 ToDoList 구현하기",
     link: "https://duckguya.github.io/to-do-list/#/",
     function: [
       "Recoil을 이용한 다크 모드 구현",

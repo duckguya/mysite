@@ -12,14 +12,14 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/about" element={<About />} />
+        <Route path="/mysite/about" element={<About />} />
 
-        <Route path="/project" element={<Project />} />
-        <Route path="/project/:id" element={<ProjectDetail />} />
+        <Route path="/mysite/project" element={<Project />} />
+        <Route path="/mysite/project/:id" element={<ProjectDetail />} />
 
-        <Route path="/resume" element={<Resume />} />
+        <Route path="/mysite/resume" element={<Resume />} />
 
-        <Route path="/" element={<Home />} />
+        <Route path="/mysite/" element={<Home />} />
       </Routes>
       <Footer />
     </BrowserRouter>

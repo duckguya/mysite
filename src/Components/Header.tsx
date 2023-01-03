@@ -36,7 +36,7 @@ function Header() {
   return (
     <Nav state={state}>
       {categories.map((category, idx) => (
-        <Link key={idx} to={category.linkName}>
+        <Link key={idx} to={`/mysite${category.linkName}`}>
           <Tab
             value={idx}
             className={category.linkName == state ? " active" : ""}
