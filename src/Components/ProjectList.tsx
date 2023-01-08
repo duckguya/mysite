@@ -6,13 +6,36 @@ import sample from "../assets/images/test2.png";
 import { useState } from "react";
 import { PortfolioContent } from "../utils/PortfolioContent";
 import ProjectDetail from "./ProjectDetail";
+import { useQuery } from "@tanstack/react-query";
+import { GetProjects } from "../api";
+
+interface IData {
+  image: string;
+  text: string;
+}
+
+interface IProjectData {
+  id: number;
+  title: string;
+  name: string;
+  technologies: string[];
+  description: string;
+  link: string;
+  function: string[];
+  contents: IData[];
+  thumbnail: string;
+}
 
 function ProjectList() {
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useRecoilState(isVisibleState);
   const [isInfo, setIsInfo] = useState(false);
-  const [datas, setDatas] = useState(PortfolioContent);
+  // const [datas, setDatas] = useState(PortfolioContent);
   const [detailId, setDetailId] = useState<number | null>(null);
+
+  const { isLoading, data: datas } = useQuery<IProjectData[]>(["datas"], () =>
+    GetProjects()
+  );
 
   const onClicked = (id: number) => {
     setDetailId(id);
@@ -32,27 +55,28 @@ function ProjectList() {
     <>
       <Container>
         {/* <button onClick={onClicked}>Project</button> */}
-        {datas.map((data, index) => (
-          <Box
-            key={index}
-            thumbnail={data.thumbnail}
-            onMouseOver={onMouseOver}
-            onMouseOut={onMouseOut}
-            onClick={() => onClicked(data.id)}
-          >
-            {/* {isInfo && ( */}
-            <Info>
-              <Title>{data.title}</Title>
-              <Overview>{data.description}</Overview>
-              <TagWrapper>
-                {data.technologies.map((tech, index) => (
-                  <Tag key={index}>{tech}</Tag>
-                ))}
-              </TagWrapper>
-            </Info>
-            {/* )} */}
-          </Box>
-        ))}
+        {datas &&
+          datas.map((data, index) => (
+            <Box
+              key={index}
+              thumbnail={data.thumbnail}
+              onMouseOver={onMouseOver}
+              onMouseOut={onMouseOut}
+              onClick={() => onClicked(data.id)}
+            >
+              {/* {isInfo && ( */}
+              <Info>
+                <Title>{data.title}</Title>
+                <Overview>{data.description}</Overview>
+                <TagWrapper>
+                  {data.technologies.map((tech, index) => (
+                    <Tag key={index}>{tech}</Tag>
+                  ))}
+                </TagWrapper>
+              </Info>
+              {/* )} */}
+            </Box>
+          ))}
       </Container>
 
       {detailId && <ProjectDetail />}

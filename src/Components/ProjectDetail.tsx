@@ -1,5 +1,7 @@
+import { useQuery } from "@tanstack/react-query";
 import { useMatch } from "react-router-dom";
 import styled from "styled-components";
+import { GetProjectDetail } from "../api";
 // import sample from "../assets/images/net.gif";
 import {
   IGetPortfolioDetail,
@@ -9,59 +11,82 @@ import {
 interface IProps {
   data?: IGetPortfolioDetail;
 }
+interface IData {
+  image: string;
+  text: string;
+}
+
+interface IProjectData {
+  id: number;
+  title: string;
+  name: string;
+  technologies: string[];
+  description: string;
+  link: string;
+  function: string[];
+  contents: IData[];
+  thumbnail: string;
+}
 
 function ProjectDetail() {
   const detailMatch = useMatch("/mysite/project/:projectId");
 
-  const datas = PortfolioContent;
   const id = Number(detailMatch?.params.projectId);
-  const data = datas[id];
+
+  const { isLoading, data } = useQuery<IProjectData>(["data"], () =>
+    GetProjectDetail(id)
+  );
+
+  // const datas = PortfolioContent;
+  // const data = datas[id];
 
   return (
     <Container>
-      <ContentWrapper>
-        <TextWrapper>
-          <Header>
-            <a href={data.link} title={"잘부탁드립니다!"} target="_blank">
-              Demo &gt;
-            </a>
-            <Title>{data.title}</Title>
-            <span>{data.description}</span>
-          </Header>
-          <TechWrapper>
-            <span>사용 기술</span>
-            {data.technologies.map((tech, index) =>
-              tech === data.technologies[data.technologies.length - 1] ? (
-                <p key={index}>{tech}</p>
-              ) : (
-                <p>{tech},</p>
-              )
-            )}
-          </TechWrapper>
-          <SkillWarpper>
-            <span>구현 기능</span>
-            <ul>
-              {data.function.map((f, index) => (
-                <li key={index}>{f}</li>
-              ))}
-            </ul>
-          </SkillWarpper>
-        </TextWrapper>
+      {data && (
+        <ContentWrapper>
+          <TextWrapper>
+            <Header>
+              <a href={data.link} title={"잘부탁드립니다!"} target="_blank">
+                Demo &gt;
+              </a>
+              <Title>{data.title}</Title>
+              <span>{data.description}</span>
+            </Header>
+            <TechWrapper>
+              <span>사용 기술</span>
+              {data.technologies.map((tech, index) =>
+                tech === data.technologies[data.technologies.length - 1] ? (
+                  <p key={index}>{tech}</p>
+                ) : (
+                  <p key={index}>{tech},</p>
+                )
+              )}
+            </TechWrapper>
+            <SkillWarpper>
+              <span>구현 기능</span>
+              <ul>
+                {data.function.map((f, index) => (
+                  <li key={index}>{f}</li>
+                ))}
+              </ul>
+            </SkillWarpper>
+          </TextWrapper>
 
-        {/* <ScrollWrapper> */}
-        {data.contents.map((content, index) => (
-          <ScrollWrapper>
-            <ImgWrapper>
-              <ImgBox key={index} image={content.image} />
-            </ImgWrapper>
-            <Explanation>
-              {/* <div /> */}
-              <p>{content.text}</p>
-              <div />
-            </Explanation>
-          </ScrollWrapper>
-        ))}
-      </ContentWrapper>
+          {/* <ScrollWrapper> */}
+          {data.contents.map((content, index) => (
+            <ScrollWrapper key={index}>
+              <ImgWrapper>
+                <ImgBox image={content.image} />
+              </ImgWrapper>
+              <Explanation>
+                {/* <div /> */}
+                <p>{content.text}</p>
+                <div />
+              </Explanation>
+            </ScrollWrapper>
+          ))}
+        </ContentWrapper>
+      )}
     </Container>
   );
 }

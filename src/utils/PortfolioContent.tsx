@@ -1,4 +1,4 @@
-import net1 from "../assets/images/net1.gif";
+import net_thumbnail from "../assets/images/net1.gif";
 import net2 from "../assets/images/net2.gif";
 import net3 from "../assets/images/net3.gif";
 import net4 from "../assets/images/net4.png";
@@ -10,6 +10,10 @@ import todo3 from "../assets/images/todo_update.gif";
 import todo4 from "../assets/images/todo_delete.gif";
 import todo5 from "../assets/images/todo_category.gif";
 import coin_thumbnail from "../assets/images/coin_thumbnail.png";
+import coin1 from "../assets/images/coin_sort.gif";
+import coin2 from "../assets/images/coin_darkmode.gif";
+import coin3 from "../assets/images/coin_detail.gif";
+import coin4 from "../assets/images/coin_nav.gif";
 
 class Portfolio {
   id!: number;
@@ -34,67 +38,6 @@ export interface IGetAbout extends About {}
 export const PortfolioContent = [
   {
     id: 0,
-    title: "Netflix clone",
-    technologies: ["React", "Typescript", "styled-component", "react-query"],
-    description: "TMDB API를 이용하여 영화, 드라마 페이지 구현하기",
-    link: "https://duckguya.github.io/netflix-clone/#/",
-    function: [
-      "영화/드라마 리스트 페이지",
-      "영화 디테일 페이지(내가 선택한 콘텐츠와 비슷한 콘텐츠 리스트, 내가 선택한 영화 예고편)",
-      "검색 페이지",
-      "react-loading-skeleton으로 로딩화면 구현",
-      "error page",
-    ],
-    contents: [
-      {
-        image: net1,
-        text: `Content List
-        모든 페이지의 레이아웃 배치는 flex를 사용했습니다.
-        carousel을 구현하기 위해 react-slick 라이브러리를 사용했습니다. 기본 carousel에서 넷플릭스와 어울리도록 커스터마이징을 하였습니다.\n
-        영화 페이지와 티비쇼 페이지의 레이아웃이 같기 때문에 하나의 컴포넌트로 어떻게 재활용 할지 고민했습니다.
-        시작부터 깔끔히 코드를 짜야 한다는 생각에 집중하다 보니 오히려 코드가 정리되지 않았습니다. 그래서 각각의 컴포넌트를 만들고 후반에 정리하는 작업을 했습니다.
-        각각 라우터를 만들어주고 하나의 컴포넌트에 연결해 주었습니다. props에 type을 줘서 tv, movie를 구분을 주었습니다.
-        컴포넌트를 통합하고 나니 css 작업을 효율적으로 할 수 있게되었습니다. 중복되는 코드를 자동화하여 코드를 개선시켰습니다.
-        `,
-      },
-      {
-        image: net2,
-        text: `Content Detail
-        react-player 라이브러리를 사용하였습니다. 해당 콘텐츠에 youtube 영상이 포함되어 있으면 비디오를 key를 가져오는 api를 호출했습니다.
-        오래된 영화같이 영상이 포함되어 있지 않으면 포스터를 대신 배치했습니다.
-
-        비슷한 콘텐츠 api를 호출하여 하단을 채워주었습니다. 비슷한 콘텐츠는 리스트가 많기 때문에 9개로 제한하였습니다.
-        `,
-      },
-      {
-        image: net3,
-        text: `Content Search
-        애니메이션은 framer-motion 라이브러리를 사용하였습니다. 검색 아이콘을 클릭하면 설정해놓은  애니메이션이 실행됩니다.\n
-        검색 api는 영화와 티비쇼가 같이 검색되어 결과가 반환되기 때문에 영화 레이아웃과 티비 레이아웃을 나누었습니다.
-        콘테츠 리스트와 같이 같은 레이아웃을 쓰기때문에 하나의 컴포넌트에 리스트 컴포넌트와 디테일 컴포넌트를 넣어주었습니다. 리스트는  props에 type을 넣어주어 구분하였습니다.\n
-        검색결과가 없을 경우 메시지를 띄어주어 사용자가 확인 할 수 있게 하였습니다.
-        `,
-      },
-
-      {
-        image: net4,
-        text: `Loading Page
-        데이터를 가져오는 동안 빈화면 대신 콘텐츠를 표시하는 용도로 react-loading-skeloton 라이브러리를 사용했습니다.
-        스켈레톤 컴포넌트를 만들어 필요한 화면에 넣어주었습니다.
-        `,
-      },
-      {
-        image: net5,
-        text: `Error Page
-        에러가 날 경우 사용자들이 혼란스러워하지 않게 에러 컴포넌트를 만들어주었습니다. 새로고침을 유도하도록 문구를 적고 아래 버튼을 달아줬습니다.
-        `,
-      },
-    ],
-
-    thumbnail: net1,
-  },
-  {
-    id: 1,
     title: "To Do List",
     technologies: [
       "React",
@@ -103,7 +46,7 @@ export const PortfolioContent = [
       "Recoil",
       "Localstorage",
     ],
-    description: "개인 프로젝트 ToDoList 구현하기",
+    description: "recoil을 활용한 ToDoList 구현하기",
     link: "https://duckguya.github.io/to-do-list/#/",
     function: [
       "Recoil을 이용한 다크 모드 구현",
@@ -163,6 +106,67 @@ export const PortfolioContent = [
     thumbnail: todo_thumbnail,
   },
   {
+    id: 1,
+    title: "Netflix clone",
+    technologies: ["React", "Typescript", "styled-component", "react-query"],
+    description: "TMDB API를 이용하여 영화, 드라마 페이지 구현하기",
+    link: "https://duckguya.github.io/netflix-clone/#/",
+    function: [
+      "영화/드라마 리스트 페이지",
+      "영화 디테일 페이지(내가 선택한 콘텐츠와 비슷한 콘텐츠 리스트, 내가 선택한 영화 예고편)",
+      "검색 페이지",
+      "react-loading-skeleton으로 로딩화면 구현",
+      "error page",
+    ],
+    contents: [
+      {
+        image: net_thumbnail,
+        text: `Content List
+        모든 페이지의 레이아웃 배치는 flex를 사용했습니다.
+        carousel을 구현하기 위해 react-slick 라이브러리를 사용했습니다. 기본 carousel에서 넷플릭스와 어울리도록 커스터마이징을 하였습니다.\n
+        영화 페이지와 티비쇼 페이지의 레이아웃이 같기 때문에 하나의 컴포넌트로 어떻게 재활용 할지 고민했습니다.
+        시작부터 깔끔히 코드를 짜야 한다는 생각에 집중하다 보니 오히려 코드가 정리되지 않았습니다. 그래서 각각의 컴포넌트를 만들고 후반에 정리하는 작업을 했습니다.
+        각각 라우터를 만들어주고 하나의 컴포넌트에 연결해 주었습니다. props에 type을 줘서 tv, movie를 구분을 주었습니다.
+        컴포넌트를 통합하고 나니 css 작업을 효율적으로 할 수 있게되었습니다. 중복되는 코드를 자동화하여 코드를 개선시켰습니다.
+        `,
+      },
+      {
+        image: net2,
+        text: `Content Detail
+        react-player 라이브러리를 사용하였습니다. 해당 콘텐츠에 youtube 영상이 포함되어 있으면 비디오를 key를 가져오는 api를 호출했습니다.
+        오래된 영화같이 영상이 포함되어 있지 않으면 포스터를 대신 배치했습니다.
+
+        비슷한 콘텐츠 api를 호출하여 하단을 채워주었습니다. 비슷한 콘텐츠는 리스트가 많기 때문에 9개로 제한하였습니다.
+        `,
+      },
+      {
+        image: net3,
+        text: `Content Search
+        애니메이션은 framer-motion 라이브러리를 사용하였습니다. 검색 아이콘을 클릭하면 설정해놓은  애니메이션이 실행됩니다.\n
+        검색 api는 영화와 티비쇼가 같이 검색되어 결과가 반환되기 때문에 영화 레이아웃과 티비 레이아웃을 나누었습니다.
+        콘테츠 리스트와 같이 같은 레이아웃을 쓰기때문에 하나의 컴포넌트에 리스트 컴포넌트와 디테일 컴포넌트를 넣어주었습니다. 리스트는  props에 type을 넣어주어 구분하였습니다.\n
+        검색결과가 없을 경우 메시지를 띄어주어 사용자가 확인 할 수 있게 하였습니다.
+        `,
+      },
+
+      {
+        image: net4,
+        text: `Loading Page
+        데이터를 가져오는 동안 빈화면 대신 콘텐츠를 표시하는 용도로 react-loading-skeloton 라이브러리를 사용했습니다.
+        스켈레톤 컴포넌트를 만들어 필요한 화면에 넣어주었습니다.
+        `,
+      },
+      {
+        image: net5,
+        text: `Error Page
+        에러가 날 경우 사용자들이 혼란스러워하지 않게 에러 컴포넌트를 만들어주었습니다. 새로고침을 유도하도록 문구를 적고 아래 버튼을 달아줬습니다.
+        `,
+      },
+    ],
+
+    thumbnail: net_thumbnail,
+  },
+  {
     id: 2,
     title: "Crypto Tracker",
     technologies: [
@@ -170,20 +174,55 @@ export const PortfolioContent = [
       "Typescript",
       "styled-component",
       "Recoil",
-      "Localstorage",
+      "usequery",
     ],
-    description: "",
+    description: "coinpaprika api를 활용한 암호화폐 트래커 페이지 만들기",
     link: "",
-    function: [""],
+    function: [
+      "랭크순, 오름차순, 내림차순  정렬 기능 구현",
+      "recoil을 이용한 다크 모드 구현",
+      "outlet으로 중첩 랜더링을 한 디테일 페이지",
+      "useInterval을 사용한 nav bar",
+    ],
     contents: [
       {
-        image: coin_thumbnail,
-        text: `
+        image: coin1,
+        text: `정렬 기능
+        랭크순, 오름차순, 내림차순으로 정렬 기능을 구현하였습니다.
+서버로부터 데이터를 조회하기 위해 useQuery를 사용하였습니다. useQuery의 두 번째 인자에 api 호출 함수를 넣어주었습니다. 
+호출 함수의 props에 정렬 카테고리를 전달하여 데이터를 반환하기 전 sort() 함수를 사용할 수 있게 하였습니다.
+
+api를 호출하여 전달받은 데이터에는 coin 리스트와 token 리스트가 섞여있어 분리 처리를 하였습니다. filter 함수를 통해 데이터의 type이 token인 것과 coin인 것을 구분하여 반환하도록 처리하였습니다.
         `,
       },
       {
-        image: coin_thumbnail,
-        text: `
+        image: coin2,
+        text: `다크 모드
+        Recoil을 사용하여 atom의 값에 따라 다크 모드와 라이트 모드가 변경되도록 구현하였습니다. atom의 기본값은 boolean 타입으로 지정해 주었습니다.
+ThemeProvider를 다크 모드가 필요한 컴포넌트 위에 래핑 해주어 atom의 값이 변경되면 미리 설정해놓은 스타일 객체를 적용시켜 전역으로 theme의 스타일을 사용할 수 있게 하였습니다.
+
+useRecoilState을 사용하여 다크 모드 버튼을 누르면 현재 값의 반대 값으로 변경시켜 값을 업데이트했습니다. 해당 atom을 구독하고 있던 ThemeProvider에 theme의 값이 변경되어 다크 모드와 라이트 모드를 사용할 수 있게 하였습니다.
+        `,
+      },
+      {
+        image: coin3,
+        text: `디테일 페이지
+        useParams 훅을 사용하여 url 파라미터에서 id 값을 가져왔습니다. 가져온 id를 api 호출 함수 props에 전달하여 해당 페이지의 디테일 데이터를 호출하여 렌더링 하였습니다. 
+
+chart와 price 컴포넌트는 중첩 라우팅하여 표시해 주었습니다.
+react router dom으로부터 improt 해온 Link 훅으로 서브 페이지를 추가한 후 Outlet 훅으로 부모 라우트의 컴포넌트에 자식 라우트 컴포넌트 위치를 지정해 주었습니다.
+
+chart는 react-apexcharts 라이브러리를 사용하여 커스텀 하였습니다.
+        `,
+      },
+      {
+        image: coin4,
+        text: `nav bar
+        리스트 중 상위 5개의 암호화폐를 5초 주기로 교체하여 보여주었습니다.
+
+setInterval 함수의 문제점을 보완한 커스텀 훅인 useInterval 함수를 사용하였습니다. 디테일 api를 호출해야 했기 때문에 coinId를 찾을 수 있는 리스트의 해당 인덱스가 필요했습니다.
+ustState를 이용하여 index의 초깃값을 설정해 주고 5초마다 인덱스의 값이 1씩 증가하게 하였습니다.
+useEffect의 두 번째 인자 값에 index를 넣어주어 index의 값이 변경되면 refetch 함수를 실행하여 react query가 refetch를 수행하도록 하였습니다.
         `,
       },
     ],
