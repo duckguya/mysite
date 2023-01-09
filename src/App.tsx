@@ -5,10 +5,14 @@ import About from "./Routes/About";
 import Project from "./Routes/Project";
 import Footer from "./Components/Footer";
 import ProjectDetail from "./Components/ProjectDetail";
+import { Helmet } from "react-helmet-async";
 
 function App() {
   return (
     <BrowserRouter>
+      <Helmet>
+        <title>I'm Sujin!</title>
+      </Helmet>
       <Header />
       <Routes>
         <Route path="/mysite/about" element={<About />} />
