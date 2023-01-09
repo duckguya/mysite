@@ -16,10 +16,10 @@ function Home() {
       <Title>I'm Sujin</Title>
       <Content>Welcome to my page</Content>
       <LinkWrapper>
-        <Link to={"/mysite/project"} onClick={() => onClicked("/project")}>
+        <Link to={"/mysite/project"} onClick={() => onClicked("Project")}>
           <p>project &gt;</p>
         </Link>
-        <Link to={"/mysite/about"} onClick={() => onClicked("/about")}>
+        <Link to={"/mysite/about"} onClick={() => onClicked("About")}>
           <p>about &gt;</p>
         </Link>
       </LinkWrapper>

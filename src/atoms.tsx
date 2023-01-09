@@ -17,6 +17,6 @@ export const navActiveState = atom({
 
 export const navState = atom({
   key: "navState",
-  default: "/",
+  default: "/mysite",
   effects_UNSTABLE: [persistAtom],
 });

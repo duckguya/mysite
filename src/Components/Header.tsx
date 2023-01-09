@@ -22,14 +22,12 @@ function Header() {
   useEffect(() => {
     // let path = location.pathname.slice(1);
     let path = location.pathname;
-    if (location.pathname === "/") setState(path);
-    if (location.pathname === "/project") setState(path);
-    if (location.pathname === "/about") setState(path);
+    if (path === "/mystie") setState(path);
+    if (path === "/mystie/project") setState(path);
+    if (path === "/mystie/about") setState(path);
   }, [state]);
 
   const onClicked = (name: string) => {
-    // setBtnActive(idx);
-    // setIsVisible(true);
     setState(name);
   };
 
@@ -39,7 +37,7 @@ function Header() {
         <Link key={idx} to={`/mysite${category.linkName}`}>
           <Tab
             value={idx}
-            className={category.linkName == state ? " active" : ""}
+            className={category.name == state ? " active" : ""}
             // onClick={() => toggleActive}
             onClick={() => onClicked(category.name)}
           >

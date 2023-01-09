@@ -16,6 +16,7 @@ import coin1 from "./assets/images/coin_sort.gif";
 import coin2 from "./assets/images/coin_darkmode.gif";
 import coin3 from "./assets/images/coin_detail.gif";
 import coin4 from "./assets/images/coin_nav.gif";
+import mysite_thumbnail from "./assets/images/mysite_thumbnail.png";
 
 const todoImages = [todo1, todo2, todo3, todo4, todo5];
 const netImages = [net1, net2, net3, net4, net5];
@@ -30,7 +31,6 @@ export async function GetProjects() {
   //   thumbnail
   // 이미지 데이터 넣기.
   let copy = [...response.data];
-  let todoData = copy.map((data) => data.name === "TODO");
 
   copy.map((data) => {
     if (data.name === "TODO") {
@@ -41,6 +41,9 @@ export async function GetProjects() {
     }
     if (data.name === "CRYPTO") {
       data.thumbnail = coin_thumbnail;
+    }
+    if (data.name === "MYSITE") {
+      data.thumbnail = mysite_thumbnail;
     }
   });
 
@@ -68,4 +71,23 @@ export async function GetProjectDetail(id: number) {
   }
 
   return copy;
+}
+
+interface IData {
+  sub_title: string;
+  image: string;
+  text: string;
+}
+
+export interface IProjectData {
+  id: number;
+  title: string;
+  name: string;
+  technologies: string[];
+  description: string;
+  demo_link: string;
+  github_link: string;
+  function: string[];
+  contents: IData[];
+  thumbnail: string;
 }

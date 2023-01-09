@@ -7,24 +7,7 @@ import { useState } from "react";
 import { PortfolioContent } from "../utils/PortfolioContent";
 import ProjectDetail from "./ProjectDetail";
 import { useQuery } from "@tanstack/react-query";
-import { GetProjects } from "../api";
-
-interface IData {
-  image: string;
-  text: string;
-}
-
-interface IProjectData {
-  id: number;
-  title: string;
-  name: string;
-  technologies: string[];
-  description: string;
-  link: string;
-  function: string[];
-  contents: IData[];
-  thumbnail: string;
-}
+import { GetProjects, IProjectData } from "../api";
 
 function ProjectList() {
   const navigate = useNavigate();

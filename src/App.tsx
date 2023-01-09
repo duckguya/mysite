@@ -19,7 +19,7 @@ function App() {
 
         <Route path="/mysite/resume" element={<Resume />} />
 
-        <Route path="/mysite/" element={<Home />} />
+        <Route path="/mysite" element={<Home />} />
       </Routes>
       <Footer />
     </BrowserRouter>

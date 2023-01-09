@@ -44,7 +44,8 @@ function About() {
               <p>
                 {`스타트업에서 백엔드 개발자로서 1년 3개월 일한 경험이 있습니다. 서버와 클라이언트 간 데이터 전송에 대한 기본적인 이해도가 있습니다. 대학시절 디자인을 전공하여 디자인에 대한 전반적인 이해와 감각을 가지고 있습니다.
               
-              반복되는 코드를 자동화하는 작업에서 성취감을 느끼고 비효율적인 프로세스를 개선하는 작업을 좋아합니다. 
+              우연한 계기로 프로그래밍을 접하고 흥미를 느껴 본격적으로 공부하기 시작했습니다.
+              어려운 문제를 마주치고 해결하는 과정에서 성취감을 느끼고 해결하는 과정을 작성하는 습관으로 공부하고있습니다.
               사용자의 경험을 생각하며 가지고 온 데이터를 어떻게 활용할지 고민하는 작업은 프론트엔드의 큰 매력이라고 생각합니다.\n
               팀의 소속감을 좋아하며 팀의 성장에 함께하며 도움이 되는 일을 추구합니다.
               `}
@@ -64,8 +65,8 @@ function About() {
               </p>
             </ExTitleWrapper>
 
-            {datas.map((data) => (
-              <>
+            {datas.map((data, index) => (
+              <div key={index}>
                 <Hr />
                 <ProjectWrapper>
                   <ProjectDesWrapper>
@@ -74,20 +75,20 @@ function About() {
                   </ProjectDesWrapper>
                   <ProjectTechWrapper>
                     <ul>
-                      {data.techDescription.map((tech) => (
-                        <li>{tech}</li>
+                      {data.techDescription.map((tech, index) => (
+                        <li key={index}>{tech}</li>
                       ))}
                     </ul>
                     <span>Tech Stack</span>
                     <p>{data.techStack}</p>
                   </ProjectTechWrapper>
                 </ProjectWrapper>
-              </>
+              </div>
             ))}
 
             <Hr />
 
-            <Link to={`/mysite/project`} onClick={() => onClicked("/project")}>
+            <Link to={`/mysite/project`} onClick={() => onClicked("Project")}>
               <p style={{ color: "#06c" }}>개인프로젝트 보러가기 &gt;</p>
             </Link>
           </ExperienceWrapper>

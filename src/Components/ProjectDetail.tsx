@@ -1,32 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMatch } from "react-router-dom";
 import styled from "styled-components";
-import { GetProjectDetail } from "../api";
+import { GetProjectDetail, IProjectData } from "../api";
 // import sample from "../assets/images/net.gif";
 import {
   IGetPortfolioDetail,
   PortfolioContent,
 } from "../utils/PortfolioContent";
-
-interface IProps {
-  data?: IGetPortfolioDetail;
-}
-interface IData {
-  image: string;
-  text: string;
-}
-
-interface IProjectData {
-  id: number;
-  title: string;
-  name: string;
-  technologies: string[];
-  description: string;
-  link: string;
-  function: string[];
-  contents: IData[];
-  thumbnail: string;
-}
 
 function ProjectDetail() {
   const detailMatch = useMatch("/mysite/project/:projectId");
@@ -39,15 +19,26 @@ function ProjectDetail() {
 
   // const datas = PortfolioContent;
   // const data = datas[id];
-
+  console.log(data?.demo_link);
   return (
     <Container>
       {data && (
         <ContentWrapper>
           <TextWrapper>
             <Header>
-              <a href={data.link} title={"잘부탁드립니다!"} target="_blank">
+              <a
+                href={data.demo_link}
+                title={"잘부탁드립니다!"}
+                target="_blank"
+              >
                 Demo &gt;
+              </a>
+              <a
+                href={data.github_link}
+                title={"잘부탁드립니다!"}
+                target="_blank"
+              >
+                GitHub &gt;
               </a>
               <Title>{data.title}</Title>
               <span>{data.description}</span>
@@ -80,7 +71,8 @@ function ProjectDetail() {
               </ImgWrapper>
               <Explanation>
                 {/* <div /> */}
-                <p>{content.text}</p>
+                <ContentSubTitle>{content.sub_title}</ContentSubTitle>
+                <ContentText>{content.text}</ContentText>
                 <div />
               </Explanation>
             </ScrollWrapper>
@@ -126,6 +118,7 @@ const Header = styled.div`
   a {
     padding: 5px;
     color: ${(props) => props.theme.mainColor};
+    cursor: pointer;
 
     &:hover {
       color: ${(props) => props.theme.pointColor};
@@ -212,17 +205,26 @@ const Explanation = styled.div`
   div {
     height: 30px;
   }
-  p {
-    font-weight: 500;
-    line-height: 30px;
-    &:first-line {
-      font-size: 30px;
-      line-height: 50px;
-    }
-  }
+
   @media screen and (max-width: 768px) {
     width: 100%;
   }
+`;
+const ContentFont = styled.p`
+  font-weight: 500;
+  line-height: 30px;
+  /* &:first-line {
+      font-size: 30px;
+      line-height: 50px;
+    } */
+`;
+
+const ContentSubTitle = styled(ContentFont)`
+  font-size: 30px;
+  line-height: 50px;
+`;
+const ContentText = styled(ContentFont)`
+  /* word-break: normal; */
 `;
 
 export default ProjectDetail;
