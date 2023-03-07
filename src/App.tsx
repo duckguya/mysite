@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Helmet>
         <title>I'm Sujin!</title>
       </Helmet>
@@ -23,7 +23,7 @@ function App() {
         <Route path="/mysite" element={<Home />} />
       </Routes>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
