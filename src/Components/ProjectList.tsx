@@ -19,8 +19,9 @@ function ProjectList() {
   const { isLoading, data: datas } = useQuery<IProjectData[]>(["datas"], () =>
     GetProjects()
   );
-
+  console.log(datas);
   const onClicked = (id: number) => {
+    console.log(id);
     setDetailId(id);
     setIsVisible(false);
     navigate(`/mysite/project/${id}`);
