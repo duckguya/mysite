@@ -3,10 +3,6 @@ import { useMatch } from "react-router-dom";
 import styled from "styled-components";
 import { GetProjectDetail, IProjectData } from "../api";
 // import sample from "../assets/images/net.gif";
-import {
-  IGetPortfolioDetail,
-  PortfolioContent,
-} from "../utils/PortfolioContent";
 
 function ProjectDetail() {
   const detailMatch = useMatch("/mysite/project/:projectId");
@@ -19,7 +15,7 @@ function ProjectDetail() {
 
   // const datas = PortfolioContent;
   // const data = datas[id];
-  console.log(data?.demo_link);
+
   return (
     <Container>
       {data && (
@@ -30,6 +26,7 @@ function ProjectDetail() {
                 href={data.demo_link}
                 title={"잘부탁드립니다!"}
                 target="_blank"
+                rel="noreferrer"
               >
                 Demo &gt;
               </a>
@@ -37,6 +34,7 @@ function ProjectDetail() {
                 href={data.github_link}
                 title={"잘부탁드립니다!"}
                 target="_blank"
+                rel="noreferrer"
               >
                 GitHub &gt;
               </a>
@@ -194,8 +192,8 @@ const ImgBox = styled.div<{ image: {} }>`
   border: 5px solid black;
   box-shadow: 0px 20px 10px -15px #404040;
   @media screen and (max-width: 768px) {
-    width: 216px;
-    height: 119px;
+    width: 416px;
+    height: 219px;
   }
 `;
 const Explanation = styled.div`
