@@ -74,7 +74,7 @@ function ProjectDetail() {
 
           {/* <ScrollWrapper> */}
           {data.contents.map((content, index) => (
-            <ScrollWrapper key={index}>
+            <ScrollWrapper key={index} isWeather={isWeather}>
               <ImgWrapper>
                 <ImgBox image={content.image} isWeather={isWeather} />
               </ImgWrapper>
@@ -175,8 +175,9 @@ const SkillWarpper = styled.div`
   }
 `;
 
-const ScrollWrapper = styled.div`
+const ScrollWrapper = styled.div<{ isWeather: boolean }>`
   display: flex;
+  justify-content: ${(props) => (props.isWeather ? "space-around" : "")};
   width: 80%;
   margin-bottom: 200px;
   @media screen and (max-width: 768px) {
@@ -194,18 +195,18 @@ const ImgWrapper = styled.div`
   }
 `;
 const ImgBox = styled.div<{ image: {}; isWeather: boolean }>`
-  width: ${(props) => (props.isWeather ? " 450px" : " 716px")};
-  height: ${(props) => (props.isWeather ? " 970px" : " 410px")};
+  width: ${(props) => (props.isWeather ? " 300px" : " 716px")};
+  height: ${(props) => (props.isWeather ? " 650px" : " 410px")};
   background-image: url(${(props) => props.image});
   /* background-size: cover; */
-  background-size: ${(props) => (props.isWeather ? "containe" : "cover")};
+  background-size: ${(props) => (props.isWeather ? "cover" : "cover")};
   background-repeat: no-repeat;
   margin: 0 30px 30px 0;
   border: 5px solid black;
   box-shadow: 0px 20px 10px -15px #404040;
   @media screen and (max-width: 768px) {
-    width: 416px;
-    height: 219px;
+    width: ${(props) => (props.isWeather ? " 300px" : " 416px")};
+    height: ${(props) => (props.isWeather ? " 650px" : " 219px")};
   }
 `;
 const Explanation = styled.div`
