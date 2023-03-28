@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/mysite/static/js/main.41d9feb6.js",
+    "main.js": "/mysite/static/js/main.cc5e7239.js",
     "static/media/net1.gif": "/mysite/static/media/net1.dce106bf8493b798434e.gif",
     "static/media/mysite1.gif": "/mysite/static/media/mysite1.b92eea688b43a5c792a0.gif",
     "static/media/net3.gif": "/mysite/static/media/net3.0de246979ebcb6a78660.gif",
@@ -9,6 +9,7 @@
     "static/media/coin_sort.gif": "/mysite/static/media/coin_sort.2119e02ae423c5a36dc4.gif",
     "static/media/coin_nav.gif": "/mysite/static/media/coin_nav.635ba35e81bb66af3637.gif",
     "static/media/todo_create.gif": "/mysite/static/media/todo_create.77dd145f3730094a94ea.gif",
+    "static/media/weather.gif": "/mysite/static/media/weather.827ff6af1cbad1865f76.gif",
     "static/media/coin_darkmode.gif": "/mysite/static/media/coin_darkmode.3f602eeb02c97ecf9c84.gif",
     "static/media/todo_update.gif": "/mysite/static/media/todo_update.b2442b864a133a684153.gif",
     "static/media/todo_category.gif": "/mysite/static/media/todo_category.045d3ae438646d38ab4a.gif",
@@ -23,9 +24,9 @@
     "static/media/profile.png": "/mysite/static/media/profile.c5d0905bb8336a5be760.png",
     "static/media/todo_thumbnail.png": "/mysite/static/media/todo_thumbnail.7cd3cdd54110530f7f94.png",
     "index.html": "/mysite/index.html",
-    "main.41d9feb6.js.map": "/mysite/static/js/main.41d9feb6.js.map"
+    "main.cc5e7239.js.map": "/mysite/static/js/main.cc5e7239.js.map"
   },
   "entrypoints": [
-    "static/js/main.41d9feb6.js"
+    "static/js/main.cc5e7239.js"
   ]
 }
