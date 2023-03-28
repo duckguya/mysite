@@ -18,11 +18,13 @@ import coin3 from "./assets/images/coin_detail.gif";
 import coin4 from "./assets/images/coin_nav.gif";
 import mysite_thumbnail from "./assets/images/mysite_thumbnail.png";
 import mysite1 from "./assets/images/mysite1.gif";
+import weather from "./assets/images/weather.gif";
 
 const todoImages = [todo1, todo2, todo3, todo4, todo5];
 const netImages = [net1, net2, net3, net4, net5];
 const coinImages = [coin1, coin2, coin3, coin4];
 const mysiteImages = [mysite1];
+const weatherImages = [weather];
 
 const BASE_URL = `https://raw.githubusercontent.com/duckguya/myapi/main/portfolio/projects.json`;
 
@@ -46,6 +48,9 @@ export async function GetProjects() {
     }
     if (data.name === "MYSITE") {
       data.thumbnail = mysite_thumbnail;
+    }
+    if (data.name === "WEATHER") {
+      data.thumbnail = weather;
     }
   });
 
@@ -74,6 +79,11 @@ export async function GetProjectDetail(id: number) {
   if (copy.name === "MYSITE") {
     copy.contents.map((d: any, index: number) => {
       d.image = mysiteImages[index];
+    });
+  }
+  if (copy.name === "WEATHER") {
+    copy.contents.map((d: any, index: number) => {
+      d.image = weatherImages[index];
     });
   }
 
