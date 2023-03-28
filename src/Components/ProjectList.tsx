@@ -2,9 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { isVisibleState } from "../atoms";
-import sample from "../assets/images/test2.png";
 import { useState } from "react";
-import { PortfolioContent } from "../utils/PortfolioContent";
 import ProjectDetail from "./ProjectDetail";
 import { useQuery } from "@tanstack/react-query";
 import { GetProjects, IProjectData } from "../api";
@@ -71,6 +69,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   height: 100vh;
+  margin-bottom: 700px;
 `;
 const Box = styled.div<{ thumbnail: string }>`
   background-image: url(${(props) => props.thumbnail});

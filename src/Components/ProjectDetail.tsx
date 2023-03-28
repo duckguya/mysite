@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { useMatch } from "react-router-dom";
 import styled from "styled-components";
 import { GetProjectDetail, IProjectData } from "../api";
 // import sample from "../assets/images/net.gif";
 
 function ProjectDetail() {
+  const [isWeather, setIsWeather] = useState(false);
   const detailMatch = useMatch("/mysite/project/:projectId");
 
   const id = Number(detailMatch?.params.projectId);
@@ -12,6 +14,15 @@ function ProjectDetail() {
   const { isLoading, data } = useQuery<IProjectData>(["data"], () =>
     GetProjectDetail(id)
   );
+
+  useEffect(() => {
+    if (data) {
+      setIsWeather(false);
+      if (data.name === "WEATHER") {
+        setIsWeather(true);
+      }
+    }
+  }, [data]);
 
   // const datas = PortfolioContent;
   // const data = datas[id];
@@ -65,7 +76,7 @@ function ProjectDetail() {
           {data.contents.map((content, index) => (
             <ScrollWrapper key={index}>
               <ImgWrapper>
-                <ImgBox image={content.image} />
+                <ImgBox image={content.image} isWeather={isWeather} />
               </ImgWrapper>
               <Explanation>
                 {/* <div /> */}
@@ -182,11 +193,12 @@ const ImgWrapper = styled.div`
     position: static;
   }
 `;
-const ImgBox = styled.div<{ image: {} }>`
-  width: 716px;
-  height: 410px;
+const ImgBox = styled.div<{ image: {}; isWeather: boolean }>`
+  width: ${(props) => (props.isWeather ? " 450px" : " 716px")};
+  height: ${(props) => (props.isWeather ? " 970px" : " 410px")};
   background-image: url(${(props) => props.image});
-  background-size: cover;
+  /* background-size: cover; */
+  background-size: ${(props) => (props.isWeather ? "containe" : "cover")};
   background-repeat: no-repeat;
   margin: 0 30px 30px 0;
   border: 5px solid black;
