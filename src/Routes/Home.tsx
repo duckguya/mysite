@@ -15,14 +15,14 @@ function Home() {
     <Container>
       <Title>I'm Sujin</Title>
       <Content>Welcome to my page</Content>
-      <LinkWrapper>
+      {/* <LinkWrapper>
         <Link to={"/mysite/project"} onClick={() => onClicked("Project")}>
           <p>project &gt;</p>
         </Link>
         <Link to={"/mysite/about"} onClick={() => onClicked("About")}>
           <p>about &gt;</p>
         </Link>
-      </LinkWrapper>
+      </LinkWrapper> */}
       <Profile src={profile} title="I'm Sujin!" />
     </Container>
   );
