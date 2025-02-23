@@ -13,9 +13,11 @@ function Header() {
   const location = useLocation();
 
   const categories = [
-    { id: 1, name: "Home", linkName: "/" },
-    { id: 2, name: "Project", linkName: "/project" },
-    { id: 3, name: "About", linkName: "/about" },
+    // { id: 1, name: "Home", linkName: "/" },
+    // { id: 2, name: "Project", linkName: "/project" },
+    // { id: 3, name: "About", linkName: "/about" },
+    // { id: 3, name: "Play", linkName: "/play" },
+    { id: 3, name: "Random", linkName: "/random" },
     // { id: 4, name: "Resume", linkName: "/resume" },
   ];
 
@@ -25,6 +27,7 @@ function Header() {
     if (path === "/mystie") setState(path);
     if (path === "/mystie/project") setState(path);
     if (path === "/mystie/about") setState(path);
+    if (path === "/mystie/random") setState(path);
   }, [state]);
 
   const onClicked = (name: string) => {

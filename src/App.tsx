@@ -6,6 +6,7 @@ import Project from "./Routes/Project";
 import Footer from "./Components/Footer";
 import ProjectDetail from "./Components/ProjectDetail";
 import { Helmet } from "react-helmet-async";
+import Random from "./Components/Random";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         <Route path="/mysite/project/:id" element={<ProjectDetail />} />
 
         <Route path="/mysite" element={<Home />} />
+
+        <Route path="/mysite/random" element={<Random />} />
       </Routes>
       <Footer />
     </HashRouter>
