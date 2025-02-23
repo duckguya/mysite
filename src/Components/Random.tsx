@@ -73,12 +73,12 @@ function Random() {
       <CardContainer>
         <CardWrapper>
           <TitleWrapper>
-            <Title>여자조</Title>
+            <Title>여</Title>
           </TitleWrapper>
           {teams.female &&
             teams.female.map((team, index) => (
               <Card>
-                <h3 className="text-xl mb-2">조 {index + 1}</h3>
+                <h3 className="text-xl mb-2">{index + 1}조</h3>
                 <Name>
                   <ul className="styled-ul">
                     {team.map((member, idx) => (
@@ -93,12 +93,12 @@ function Random() {
         </CardWrapper>
         <CardWrapper>
           <TitleWrapper>
-            <Title>남자조</Title>
+            <Title>남</Title>
           </TitleWrapper>
           {teams.male &&
             teams.male.map((team, index) => (
               <Card>
-                <h3 className="text-xl mb-2">조 {index + 1}</h3>
+                <h3 className="text-xl mb-2">{index + 1}조</h3>
                 <Name>
                   <ul className="styled-ul">
                     {team.map((member, idx) => (
