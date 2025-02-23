@@ -72,34 +72,42 @@ function Random() {
 
       <CardContainer>
         <CardWrapper>
-          <Title>여자조</Title>
+          <TitleWrapper>
+            <Title>여자조</Title>
+          </TitleWrapper>
           {teams.female &&
             teams.female.map((team, index) => (
               <Card>
                 <h3 className="text-xl mb-2">조 {index + 1}</h3>
-                <ul>
-                  {team.map((member, idx) => (
-                    <li key={idx} className="text-base">
-                      {member}
-                    </li>
-                  ))}
-                </ul>
+                <Name>
+                  <ul className="styled-ul">
+                    {team.map((member, idx) => (
+                      <li key={idx} className="styled-li">
+                        {member}
+                      </li>
+                    ))}
+                  </ul>
+                </Name>
               </Card>
             ))}
         </CardWrapper>
         <CardWrapper>
-          <Title>남자조</Title>
+          <TitleWrapper>
+            <Title>남자조</Title>
+          </TitleWrapper>
           {teams.male &&
             teams.male.map((team, index) => (
               <Card>
                 <h3 className="text-xl mb-2">조 {index + 1}</h3>
-                <ul>
-                  {team.map((member, idx) => (
-                    <li key={idx} className="text-base">
-                      {member}
-                    </li>
-                  ))}
-                </ul>
+                <Name>
+                  <ul className="styled-ul">
+                    {team.map((member, idx) => (
+                      <li key={idx} className="styled-li">
+                        {member}
+                      </li>
+                    ))}
+                  </ul>
+                </Name>
               </Card>
             ))}
         </CardWrapper>
@@ -113,10 +121,11 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 20%;
+  width: 100%;
   min-height: 95vh;
   margin: 0 auto;
   padding-top: 100px;
+  margin-bottom: 50px;
   justify-content: flex-start;
   font-family: "Pretendard", sans-serif;
   font-size: 14px;
@@ -141,6 +150,7 @@ const Button = styled.div`
   border-radius: 20px;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
+  justify-content: center;
   &:hover {
     transform: scale(1.05);
   }
@@ -148,40 +158,106 @@ const Button = styled.div`
     background-color: #1976d2;
     transform: scale(0.98);
   }
+  @media (max-width: 600px) {
+    & {
+      justify-content: center;
+      font-size: 14px;
+    }
+  }
 `;
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   background: linear-gradient(180deg, #f7ff00, #fcffdc, #ffffff);
   border: 1px solid black;
   border-radius: 20px;
   padding: 50px;
+  width: 80%;
   margin-top: 30px;
+  @media (max-width: 600px) {
+    & {
+      justify-content: center;
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
 `;
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 20px;
+  @media (max-width: 600px) {
+    & {
+      width: 100%;
+      flex-wrap: wrap;
+      flex-direction: column;
+      /* justify-content: center; */
+      font-size: 14px;
+    }
+  }
 `;
 const Card = styled.div`
-  background: linear-gradient(180deg, #ffffff, #c3ffc3, #00ff00);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  margin-top: 20px;
-  width: 100px;
   align-items: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(180deg, #ffffff, #c3ffc3, #00ff00);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  width: 100px;
   border: 1px solid black;
+  @media (max-width: 600px) {
+    & {
+      width: 100%;
+    }
+  }
+`;
+const Name = styled.div`
+  @media (max-width: 600px) {
+    .styled-ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      display: flex;
+      margin: 0 auto;
+      gap: 10px;
+    }
+
+    .styled-li {
+    }
+    & {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      /* flex-wrap: wrap; */
+    }
+  }
 `;
 const Title = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
+  text-align: center;
+  height: 200px;
+  line-height: 100%;
+  text-align: center;
+  @media (max-width: 600px) {
+    & {
+      justify-content: center;
+      height: 0px;
+      width: 100%;
+      padding-top: 10px;
+    }
+  }
 `;
+const TitleWrapper = styled.div`
+  align-items: center;
+  justify-content: center;
+`;
+
 export default Random;
