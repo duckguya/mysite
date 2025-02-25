@@ -65,12 +65,21 @@ function Random() {
 
     setTeams({ male: maleTeams, female: femaleTeams });
   };
+  const getCurrentDateTime = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const date = String(now.getDate()).padStart(2, "0");
+
+    return `${year}년 ${month}월 ${date}일 침뜸실습조`;
+  };
 
   return (
     <Container>
       <Button onClick={generateTeams}>조 편성하기</Button>
 
       <CardContainer>
+        <div>{getCurrentDateTime()}</div>
         <CardWrapper>
           <TitleWrapper>
             <Title>여</Title>
@@ -187,6 +196,7 @@ const CardWrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 20px;
+  padding-top: 10px;
   @media (max-width: 600px) {
     & {
       width: 100%;
